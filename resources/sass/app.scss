@@ -1,0 +1,46 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Philosopher');
+@import url('https://fonts.googleapis.com/css?family=Kalam');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//JQueryUI
+@import '~jquery-ui/themes/base/all.css';
+
+@import "~slick-carousel/slick/slick.scss";
+
+@import "~metismenu/dist/metisMenu.min.css";
+
+@import "~swiper/dist/css/swiper.min.css";
+
+@import "~owl.carousel/dist/assets/owl.carousel.css";
+
+@import "~\smartwizard/dist/css/smart_wizard.css";
+@import "~\smartwizard/dist/css/smart_wizard_theme_dots.css";
+
+// Web
+@import "web";
+
+//fonts
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+.navbar-laravel {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.font-philosopher{
+    font-family: 'Philosopher', sans-serif;
+}
+.font-kalam{
+    font-family: 'Kalam', cursive;
+}

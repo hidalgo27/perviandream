@@ -1,0 +1,32 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+$fa-font-path:        "../webfonts";
+
+$red-primary:    #b71c1c !default;
+$red-light:    #f05545 !default;
+$red-dark:    #7f0000 !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+    "red-primary": $red-primary,
+    "red-light": $red-light,
+    "red-dark": $red-dark
+), $theme-colors);
