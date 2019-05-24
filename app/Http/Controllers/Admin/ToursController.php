@@ -1,36 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\TTour;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class ToursController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-        //
-        return view('page.home');
+        $this->middleware('auth');
     }
-    public function destinations()
-    {
-        return view('page.destinations');
-    }
-    public function tours()
-    {
-        return view('page.tours');
-    }
-    public function packages()
-    {
-        return view('page.packages');
-    }
-    public function uns()
-    {
-        return view('page.about');
-    }
-    public function itinerary($title)
-    {
 
-        return view('page.itinerary');
+    public function index(Request $request)
+    {
+        $request->user()->authorizeRoles(['user', 'admin']);
+
+        $tour = TTour::all();
+
+        return view('admin.tours', compact('tour'));
     }
 
     /**

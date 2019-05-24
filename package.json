@@ -25,6 +25,11 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "bootstrap-select": "^1.13.10",
+        "bootstrap4-toggle": "^3.4.0",
+        "bootstrap4c-dropzone": "^1.0.4",
+        "feather-icons": "^4.21.0",
+        "intl-tel-input": "^15.0.2",
         "jquery-ui": "^1.12.1",
         "lazyload": "^2.0.0-rc.2",
         "metismenu": "^3.0.4",
@@ -32,6 +37,7 @@
         "slick-carousel": "^1.8.1",
         "smartwizard": "^4.3.1",
         "swiper": "^4.5.0",
-        "vanilla-lazyload": "^12.0.0"
+        "vanilla-lazyload": "^12.0.0",
+        "venobox": "^1.8.5"
     }
 }

@@ -73,22 +73,23 @@
     <section class="my-5">
         <div class="container">
             <div class="row">
+                @foreach($paquete_categoria->sortBy('duracion') as $paquete_categorias)
                 <div class="col-4 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
                     <div class="gallary-1">
                         <div class="row">
                             <div class="col">
-                                <a href="{{route('itinerary_path', 'title')}}"><img src="{{asset('images/banners/home/lima.jpg')}}" alt="content area" class="w-100"></a>
+                                <a href="{{route('itinerary_path', 'title')}}"><img src="{{asset('images/mapas/'.$paquete_categorias->paquete->codigo.'.jpg')}}" alt="content area" class="w-100"></a>
                             </div>
                         </div>
                         <div class="row px-3">
                             <div class="col">
-                                <h4 class="text-left my-3">Title Packages</h4>
+                                <h4 class="text-left my-3">{{ucwords(strtolower($paquete_categorias->paquete->titulo))}}</h4>
                             </div>
                         </div>
                         <div class="row px-3 pb-3">
                             <div class="col-3">
                                 <div class="gym-class bg-red-light font-weight-bold text-center">
-                                    <p class="date text-white m-0">22</p>
+                                    <p class="date text-white m-0">{{$paquete_categorias->paquete->duracion}}</p>
                                     <p class="days text-white m-0 font-weight-normal">days</p>
                                 </div>
                             </div>
@@ -100,168 +101,7 @@
 
                     </div>
                 </div><!-- /.col-md-4 col -->
-                <div class="col-4 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
-                    <div class="gallary-1">
-                        <div class="row">
-                            <div class="col">
-                                <a href="{{route('itinerary_path', 'title')}}"><img src="{{asset('images/banners/home/lima.jpg')}}" alt="content area" class="w-100"></a>
-                            </div>
-                        </div>
-                        <div class="row px-3">
-                            <div class="col">
-                                <h4 class="text-left my-3">Title Packages</h4>
-                            </div>
-                        </div>
-                        <div class="row px-3 pb-3">
-                            <div class="col-3">
-                                <div class="gym-class bg-red-light font-weight-bold text-center">
-                                    <p class="date text-white m-0">22</p>
-                                    <p class="days text-white m-0 font-weight-normal">days</p>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <p class="text-left m-0 font-weight-bold text-secondary">Destinations:</p>
-                                <p class="text-left m-0 small text-red-primary">Lima, Cusco, Arequipa, Machu Picchu.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div><!-- /.col-md-4 col -->
-                <div class="col-4 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
-                    <div class="gallary-1">
-                        <div class="row">
-                            <div class="col">
-                                <a href="{{route('itinerary_path', 'title')}}"><img src="{{asset('images/banners/home/lima.jpg')}}" alt="content area" class="w-100"></a>
-                            </div>
-                        </div>
-                        <div class="row px-3">
-                            <div class="col">
-                                <h4 class="text-left my-3">Title Packages</h4>
-                            </div>
-                        </div>
-                        <div class="row px-3 pb-3">
-                            <div class="col-3">
-                                <div class="gym-class bg-red-light font-weight-bold text-center">
-                                    <p class="date text-white m-0">22</p>
-                                    <p class="days text-white m-0 font-weight-normal">days</p>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <p class="text-left m-0 font-weight-bold text-secondary">Destinations:</p>
-                                <p class="text-left m-0 small text-red-primary">Lima, Cusco, Arequipa, Machu Picchu.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div><!-- /.col-md-4 col -->
-                <div class="col-4 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
-                    <div class="gallary-1">
-                        <div class="row">
-                            <div class="col">
-                                <a href="{{route('itinerary_path', 'title')}}"><img src="{{asset('images/banners/home/lima.jpg')}}" alt="content area" class="w-100"></a>
-                            </div>
-                        </div>
-                        <div class="row px-3">
-                            <div class="col">
-                                <h4 class="text-left my-3">Title Packages</h4>
-                            </div>
-                        </div>
-                        <div class="row px-3 pb-3">
-                            <div class="col-3">
-                                <div class="gym-class bg-red-light font-weight-bold text-center">
-                                    <p class="date text-white m-0">22</p>
-                                    <p class="days text-white m-0 font-weight-normal">days</p>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <p class="text-left m-0 font-weight-bold text-secondary">Destinations:</p>
-                                <p class="text-left m-0 small text-red-primary">Lima, Cusco, Arequipa, Machu Picchu.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div><!-- /.col-md-4 col -->
-                <div class="col-4 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
-                    <div class="gallary-1">
-                        <div class="row">
-                            <div class="col">
-                                <a href="{{route('itinerary_path', 'title')}}"><img src="{{asset('images/banners/home/lima.jpg')}}" alt="content area" class="w-100"></a>
-                            </div>
-                        </div>
-                        <div class="row px-3">
-                            <div class="col">
-                                <h4 class="text-left my-3">Title Packages</h4>
-                            </div>
-                        </div>
-                        <div class="row px-3 pb-3">
-                            <div class="col-3">
-                                <div class="gym-class bg-red-light font-weight-bold text-center">
-                                    <p class="date text-white m-0">22</p>
-                                    <p class="days text-white m-0 font-weight-normal">days</p>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <p class="text-left m-0 font-weight-bold text-secondary">Destinations:</p>
-                                <p class="text-left m-0 small text-red-primary">Lima, Cusco, Arequipa, Machu Picchu.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div><!-- /.col-md-4 col -->
-                <div class="col-4 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
-                    <div class="gallary-1">
-                        <div class="row">
-                            <div class="col">
-                                <a href="{{route('itinerary_path', 'title')}}"><img src="{{asset('images/banners/home/lima.jpg')}}" alt="content area" class="w-100"></a>
-                            </div>
-                        </div>
-                        <div class="row px-3">
-                            <div class="col">
-                                <h4 class="text-left my-3">Title Packages</h4>
-                            </div>
-                        </div>
-                        <div class="row px-3 pb-3">
-                            <div class="col-3">
-                                <div class="gym-class bg-red-light font-weight-bold text-center">
-                                    <p class="date text-white m-0">22</p>
-                                    <p class="days text-white m-0 font-weight-normal">days</p>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <p class="text-left m-0 font-weight-bold text-secondary">Destinations:</p>
-                                <p class="text-left m-0 small text-red-primary">Lima, Cusco, Arequipa, Machu Picchu.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div><!-- /.col-md-4 col -->
-                <div class="col-4 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
-                    <div class="gallary-1">
-                        <div class="row">
-                            <div class="col">
-                                <a href="{{route('itinerary_path', 'title')}}"><img src="{{asset('images/banners/home/lima.jpg')}}" alt="content area" class="w-100"></a>
-                            </div>
-                        </div>
-                        <div class="row px-3">
-                            <div class="col">
-                                <h4 class="text-left my-3">Title Packages</h4>
-                            </div>
-                        </div>
-                        <div class="row px-3 pb-3">
-                            <div class="col-3">
-                                <div class="gym-class bg-red-light font-weight-bold text-center">
-                                    <p class="date text-white m-0">22</p>
-                                    <p class="days text-white m-0 font-weight-normal">days</p>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <p class="text-left m-0 font-weight-bold text-secondary">Destinations:</p>
-                                <p class="text-left m-0 small text-red-primary">Lima, Cusco, Arequipa, Machu Picchu.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div><!-- /.col-md-4 col -->
+                @endforeach
             </div>
         </div><!-- /.container -->
     </section><!-- /.item -->
