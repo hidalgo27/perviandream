@@ -74,7 +74,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-4 mb-4">
-                    <a href="{{route('itinerary_path', 'title')}}">
+                    <a href="">
                         <div class="position-relative clearfix">
                             <img src="{{asset('images/destinations/amazon.jpg')}}" alt="" class="w-100 rounded">
                             <span class="destino-name position-absolute bg-rgba-dark-4 d-block text-white w-100 botton-10 text-center p-2 h5">17 TAGE</span>
@@ -114,7 +114,7 @@
 
                     <div class="row">
                         <div class="col-12 text-right">
-                            <a href="{{route('itinerary_path', 'title')}}" class="btn btn-red-dark text-right">Detail Program</a>
+                            <a href="" class="btn btn-red-dark text-right">Detail Program</a>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
             <hr class="my-5">
             <div class="row align-items-center">
                 <div class="col-4 mb-4">
-                    <a href="{{route('itinerary_path', 'title')}}">
+                    <a href="">
                         <div class="position-relative clearfix">
                             <img src="{{asset('images/destinations/amazon.jpg')}}" alt="" class="w-100 rounded">
                             <span class="destino-name position-absolute bg-rgba-dark-4 d-block text-white w-100 botton-10 text-center p-2 h5">17 TAGE</span>
@@ -164,7 +164,7 @@
 
                     <div class="row">
                         <div class="col-12 text-right">
-                            <a href="{{route('itinerary_path', 'title')}}" class="btn btn-red-dark text-right">Detail Program</a>
+                            <a href="" class="btn btn-red-dark text-right">Detail Program</a>
                         </div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
             <hr class="my-5">
             <div class="row align-items-center">
                 <div class="col-4 mb-4">
-                    <a href="{{route('itinerary_path', 'title')}}">
+                    <a href="">
                         <div class="position-relative clearfix">
                             <img src="{{asset('images/destinations/amazon.jpg')}}" alt="" class="w-100 rounded">
                             <span class="destino-name position-absolute bg-rgba-dark-4 d-block text-white w-100 botton-10 text-center p-2 h5">17 TAGE</span>
@@ -214,7 +214,7 @@
 
                     <div class="row">
                         <div class="col-12 text-right">
-                            <a href="{{route('itinerary_path', 'title')}}" class="btn btn-red-dark text-right">Detail Program</a>
+                            <a href="" class="btn btn-red-dark text-right">Detail Program</a>
                         </div>
                     </div>
                 </div>
