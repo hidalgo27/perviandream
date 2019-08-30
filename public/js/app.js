@@ -51424,9 +51424,9 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Sigma\proyectos\homestead\codigo\peruviandream\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\Sigma\proyectos\homestead\codigo\peruviandream\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\Sigma\proyectos\homestead\codigo\peruviandream\resources\sass\admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! /Users/hidalgoponce/web/sites/peruviandream/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/hidalgoponce/web/sites/peruviandream/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/hidalgoponce/web/sites/peruviandream/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

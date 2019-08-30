@@ -35,7 +35,7 @@ Route::get('/uber-uns', [
     'uses' => 'HomepageController@uns',
     'as' => 'uns_path',
 ]);
-Route::get('/package/{title}', [
+Route::get('/package/{title}/{days}-days-tours', [
     'uses' => 'HomepageController@itinerary',
     'as' => 'itinerary_path',
 ]);

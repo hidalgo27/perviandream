@@ -164,7 +164,7 @@
                     <div class="gallary-1">
                         <div class="row">
                             <div class="col">
-                                <a href="{{route('itinerary_path', 'title')}}"><img src="{{asset('images/mapas/'.$paquete_categorias->paquete->imagen.'')}}" alt="content area" class="w-100"></a>
+                                <a href="{{route('itinerary_path', [str_replace(' ','-',strtolower($paquete_categorias->paquete->titulo)), $paquete_categorias->paquete->duracion])}}"><img src="{{asset('images/mapas/'.$paquete_categorias->paquete->imagen.'')}}" alt="content area" class="w-100"></a>
                             </div>
                         </div>
                         <div class="row px-3">

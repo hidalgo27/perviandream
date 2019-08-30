@@ -4,8 +4,17 @@ namespace App\Http\Controllers;
 
 
 use App\TCategoria;
+use App\TComentario;
+use App\THotel;
+use App\THotelDestino;
+use App\TItinerarioImagen;
+use App\TPaquete;
 use App\TPaqueteCategoria;
+use App\TPaqueteDestino;
+use App\TPaqueteDificultad;
+use App\TPaqueteVuelo;
 use App\TTour;
+use App\TVuelo;
 
 class HomepageController extends Controller
 {
@@ -34,9 +43,23 @@ class HomepageController extends Controller
     {
         return view('page.about');
     }
-    public function itinerary($title)
+    public function itinerary($title, $days)
     {
-        return view('page.itinerary');
+        $title = str_replace('-', ' ', strtoupper($title));
+//        dd($title);
+        $paquete = TPaquete::with('paquetes_destinos', 'precio_paquetes', 'imagen_paquetes', 'paquete_incluye', 'paquete_no_incluye')->where('estado', 0)->get();
+        $paquete_destinos = TPaqueteDestino::with('destinos')->get();
+//        $paquete_categoria =
+        $paquete_iti = TPaquete::with('paquete_itinerario','paquetes_destinos', 'precio_paquetes', 'paquetes_categoria')->where('titulo', $title)->get();
+//        $imagen_itinerario = TItinerarioImagen::all();
+        $hoteles = THotel::all();
+        $hoteles_destinos = THotelDestino::all();
+        $vuelo = TVuelo::all();
+        $paquete_vuelo = TPaqueteVuelo::with('vuelos')->get();
+        $dificultad = TPaqueteDificultad::all();
+        $comentario = TComentario::with('itinerario')->get();
+        $imagen = TItinerarioImagen::with('itinerario')->get();
+        return view('page.itinerary', ['title'=>$title, 'paquete_iti'=>$paquete_iti, 'paquete_destinos'=>$paquete_destinos, 'paquete'=>$paquete, 'hoteles'=>$hoteles, 'hoteles_destinos'=>$hoteles_destinos, 'vuelo'=>$vuelo, 'paquete_vuelo'=>$paquete_vuelo, 'dificultad'=>$dificultad, 'comentario'=>$comentario, 'imagen'=>$imagen]);
     }
     /**
      * Show the form for creating a new resource.
