@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slider-item"><img src="{{asset('images/sliders/slider-5.jpg')}}"/>
+                <div class="slider-item"><img src="{{asset('images/sliders/slider-a.jpg')}}"/>
                     <div class="container">
                         <div class="slider-content row align-items-center">
                             {{--<div class="container">--}}

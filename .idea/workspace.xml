@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a868784-1cb3-4725-bb29-a3e13b18d1df" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slider-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/slider-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slider/slider-xs.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/slider/slider-xs.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/sliders/slider-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/sliders/slider-4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/sliders/slider-6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/sliders/slider-6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/page/packages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/packages.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -174,7 +181,7 @@
       <workItem from="1567126366827" duration="481000" />
       <workItem from="1567126904775" duration="2313000" />
       <workItem from="1567167770734" duration="4474000" />
-      <workItem from="1567176317075" duration="239000" />
+      <workItem from="1567176317075" duration="1864000" />
     </task>
     <servers />
   </component>
