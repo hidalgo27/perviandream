@@ -74,7 +74,7 @@
         <div class="container">
             <div class="row">
                 @foreach($paquete_categoria->sortBy('duracion') as $paquete_categorias)
-                <div class="col-4 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+                <div class="col-4 d-flex text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
                     <div class="gallary-1">
                         <div class="row">
                             <div class="col">

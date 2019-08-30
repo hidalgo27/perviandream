@@ -160,7 +160,7 @@
 
             <div class="row">
                 @foreach($paquete_categoria as $paquete_categorias)
-                <div class="col text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+                <div class="col d-flex text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
                     <div class="gallary-1">
                         <div class="row">
                             <div class="col">
