@@ -146,9 +146,9 @@
                                     @foreach($paquetes->paquete_itinerario as $itinerario)
                                         <div class="row pt-4" id="section-{{$itinerario->itinerarios->id}}">
                                             <div class="col-12 col-md-12 col-lg-8">
-                                                <h6 class="text-g-yellow font-weight-normal"><span class="badge badge-g-dark">Day {{$day}}:</span> <strong>{{ucwords(strtolower($itinerario->itinerarios->titulo))}}</strong>
-                                                </h6>
-                                                @php echo $itinerario->itinerarios->resumen; @endphp
+                                                <h4 class="text-red-light font-weight-normal"><span class="badge badge-red-dark">Day {{$day}}:</span> <strong>{{ucwords(strtolower($itinerario->itinerarios->titulo))}}</strong>
+                                                </h4>
+                                                @php echo $itinerario->itinerarios->descripcion; @endphp
                                             </div>
                                             <div class="col-12 col-md-12 col-lg">
                                                 <div class="box15 float-right rounded">
