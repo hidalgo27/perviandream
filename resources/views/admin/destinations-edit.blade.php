@@ -123,18 +123,20 @@
         <div class="row my-5">
             <div class="col-9">
                 <div class="row">
-                    @foreach($destination->destino_imagen as $imagen)
-                        <div class="col-3 text-center">
-                            <img src="{{asset('/images/destinations/banners/'.$imagen->nombre.'')}}" alt="" class="img-thumbnail w-100 mb-2">
-                            <form action="{{route('admin_destinations_slider_form_delete_path')}}" method="post">
-{{--                                @method('DELETE')--}}
-                                @csrf
-                                <input type="hidden" name="id_destinos" value="{{$destination->id}}">
-                                <input type="hidden" name="filename" value="{{$imagen->nombre}}">
-                                <button type="submit" class="btn btn-xs btn-danger">Eliminar</button>
-                            </form>
-                        </div>
-                    @endforeach
+                    @if ($destination->destino_imagen)
+                        @foreach($destination->destino_imagen as $imagen)
+                            <div class="col-3 text-center">
+                                <img src="{{asset('/images/destinations/banners/'.$imagen->nombre.'')}}" alt="" class="img-thumbnail w-100 mb-2">
+                                <form action="{{route('admin_destinations_slider_form_delete_path')}}" method="post">
+                                    {{--                                @method('DELETE')--}}
+                                    @csrf
+                                    <input type="hidden" name="id_destinos" value="{{$destination->id}}">
+                                    <input type="hidden" name="filename" value="{{$imagen->nombre}}">
+                                    <button type="submit" class="btn btn-xs btn-danger">Eliminar</button>
+                                </form>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="col text-center">
@@ -158,7 +160,7 @@
                 </form>
             </div>
             <div class="col">
-                @if ($destination->imagen ==NULL)
+                @if ($destination->imagen == NULL)
                 <form method="post" action="{{route('admin_image_destinations_image_store_path')}}" enctype="multipart/form-data"
                       class="dropzone" id="dropzone_imagen">
                     <input type="hidden" value="{{$destination->id}}" name="id_destinations_file">
