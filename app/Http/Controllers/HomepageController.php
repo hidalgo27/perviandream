@@ -38,7 +38,8 @@ class HomepageController extends Controller
     public function packages()
     {
         $paquete_categoria = TPaqueteCategoria::with('paquete.precio_paquetes', 'categoria')->get();
-        return view('page.packages', compact('paquete_categoria'));
+        $paquete_destinos = TPaqueteDestino::with('destinos')->get();
+        return view('page.packages', compact('paquete_categoria','paquete_destinos'));
     }
     public function uns()
     {

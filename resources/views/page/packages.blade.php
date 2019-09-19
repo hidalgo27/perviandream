@@ -74,33 +74,44 @@
         <div class="container">
             <div class="row">
                 @foreach($paquete_categoria->sortBy('duracion') as $paquete_categorias)
-                <div class="col-4 d-flex text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
-                    <div class="gallary-1">
-                        <div class="row">
-                            <div class="col">
-                                <a href="{{route('itinerary_path', [str_replace(' ','-',strtolower($paquete_categorias->paquete->titulo)), $paquete_categorias->paquete->duracion])}}"><img src="{{asset('images/mapas/'.$paquete_categorias->paquete->imagen.'')}}" alt="content area" class="w-100"></a>
-                            </div>
-                        </div>
-                        <div class="row px-3">
-                            <div class="col">
-                                <h4 class="text-left my-3">{{ucwords(strtolower($paquete_categorias->paquete->titulo))}}</h4>
-                            </div>
-                        </div>
-                        <div class="row px-3 pb-3">
-                            <div class="col-3">
-                                <div class="gym-class bg-red-light font-weight-bold text-center">
-                                    <p class="date text-white m-0">{{$paquete_categorias->paquete->duracion}}</p>
-                                    <p class="days text-white m-0 font-weight-normal">days</p>
+                    <div class="col-4 d-flex text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+                        <div class="gallary-1">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{{route('itinerary_path', [str_replace(' ','-',strtolower($paquete_categorias->paquete->titulo)), $paquete_categorias->paquete->duracion])}}"><img src="{{asset('images/mapas/'.$paquete_categorias->paquete->imagen.'')}}" alt="content area" class="w-100 rounded"></a>
                                 </div>
                             </div>
-                            <div class="col-9">
-                                <p class="text-left m-0 font-weight-bold text-secondary">Destinations:</p>
-                                <p class="text-left m-0 small text-red-primary">Lima, Cusco, Arequipa, Machu Picchu.</p>
+                            <div class="row px-3">
+                                <div class="col">
+                                    <h5 class="text-left font-weight-bold my-3">{{ucwords(strtolower($paquete_categorias->paquete->titulo))}}</h5>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row px-3 pb-3">
+                                <div class="col-3">
+                                    <div class="gym-class bg-red-light font-weight-bold text-center">
+                                        <p class="date text-white m-0">{{$paquete_categorias->paquete->duracion}}</p>
+                                        <p class="TAG  text-white m-0 font-weight-normal">TAG </p>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <p class="text-left m-0 font-weight-bold text-secondary">Destinations:</p>
+                                    <p class="text-left m-0 small text-red-primary">
+                                        @php
+                                            $m = 1;
+                                            $num_des = count($paquete_destinos->where('idpaquetes',$paquete_categorias->paquete->id));
+                                        @endphp
+                                        @foreach($paquete_destinos->where('idpaquetes',$paquete_categorias->paquete->id) as $paquete_destino)
+                                            @if(isset($paquete_destino->destinos->nombre))
+                                                {{ucwords(strtolower($paquete_destino->destinos->nombre))}}@if($m < $num_des),@else.@endif
+                                                @php $m++; @endphp
+                                            @endif
+                                        @endforeach
+                                    </p>
+                                </div>
+                            </div>
 
-                    </div>
-                </div><!-- /.col-md-4 col -->
+                        </div>
+                    </div><!-- /.col-md-4 col -->
                 @endforeach
             </div>
         </div><!-- /.container -->

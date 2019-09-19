@@ -12,10 +12,6 @@
                     <span data-feather="shopping-cart"></span>
                     Packages
                 </a>
-                <a class="nav-link" href="{{route('admin_tours_path')}}">
-                    <span data-feather="shopping-cart"></span>
-                    Tours
-                </a>
             </li>
 
             {{--<li class="nav-item">--}}
@@ -81,6 +77,34 @@
                     Destinations
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin_testimonial_index_path')}}">
+                    <span data-feather="message-circle"></span>
+                    Testimonials
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin_video_index_path')}}">
+                    <span data-feather="video"></span>
+                    Video Testimonials
+                </a>
+            </li>
         </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Sales</span>
+            <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+            </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin_list_index_path')}}">
+                    <span data-feather="code"></span>
+                    Code Inquire
+                </a>
+            </li>
+        </ul>
+
     </div>
 </nav>
