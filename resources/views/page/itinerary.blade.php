@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <h1 class="text-red-primary display-4 text-red font-weight-bold">{{($paquetes->titulo)}}</h1>
+                    <h1 class="text-red-primary h1 text-red font-weight-bold">{{($paquetes->titulo)}}</h1>
                     @foreach($paquetes->precio_paquetes->where('estrellas', 2)->sortBy('estrellas') as $precio)
                         @if($precio->precio_d > 0)
 {{--                            <span class="h1 font-weight-bold text-danger">{{$paquetes->duracion}} days tours from <sup>$</sup>{{$precio->precio_d}}</span>--}}
@@ -55,13 +55,13 @@
                 <div class="col">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Overview</a>
+                            <a class="nav-link font-weight-bold active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Overview</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Itinerary</a>
+                            <a class="nav-link font-weight-bold" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Itinerary</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Inquire</a>
+                            <a class="nav-link font-weight-bold" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Inquire</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -86,7 +86,7 @@
                                         <div class="col-12 mb-3 mb-lg-0 col-lg d-flex">
                                             @foreach($paquetes->paquetes_categoria as $categoria)
                                                 <div class="card p-3 w-100">
-                                                    <h5 class="text-secondary font-weight-bold"><i class="fas fa-angle-right"></i> @lang('itinerary.category'): <span class="text-primary">{{ucwords(strtolower($categoria->categoria->nombre))}}</span></h5>
+                                                    <h5 class="text-secondary font-weight-bold"><i class="fas fa-angle-right"></i> Category: <span class="text-primary">{{ucwords(strtolower($categoria->categoria->nombre))}}</span></h5>
                                                     <p>{{$categoria->categoria->descripcion}}</p>
                                                 </div>
                                             @endforeach
@@ -94,7 +94,7 @@
                                         <div class="col-12 mb-3 mb-lg-0 col-lg d-flex">
                                             <div class="card p-3 w-100">
                                                 @foreach($dificultad->where('idpaquetes', $paquetes->id) as $dificultades)
-                                                    <h5 class="text-secondary font-weight-bold"><i class="fas fa-angle-right"></i> @lang('itinerary.physical_demand'): <span class="text-primary text-capitalize">{{$dificultades->dificultad->nombre}}</span></h5>
+                                                    <h5 class="text-secondary font-weight-bold"><i class="fas fa-angle-right"></i> Physical demand: <span class="text-primary text-capitalize">{{$dificultades->dificultad->nombre}}</span></h5>
                                                     <p>{{$dificultades->dificultad->descripcion}}</p>
                                                 @endforeach
                                             </div>
