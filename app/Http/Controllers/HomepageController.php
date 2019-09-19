@@ -36,7 +36,7 @@ class HomepageController extends Controller
     public function destinations_show($title)
     {
         $ciudad = explode('-tours', $title);
-        $ciudad = $ciudad[0];
+        $ciudad = str_replace('-', ' ', $ciudad[0]);
         $destinos = TDestino::all();
         $paquete = TPaquete::with('paquetes_destinos', 'precio_paquetes', 'paquetes_categoria.categoria')->get();
         $paquetes_de = TPaqueteDestino::with(['destinos'=>function($query) use ($ciudad) { $query->where('nombre', $ciudad);}])->get();
