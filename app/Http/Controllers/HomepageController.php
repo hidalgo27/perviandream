@@ -40,7 +40,7 @@ class HomepageController extends Controller
         $destinos = TDestino::all();
         $paquete = TPaquete::with('paquetes_destinos', 'precio_paquetes', 'paquetes_categoria.categoria')->get();
         $paquetes_de = TPaqueteDestino::with(['destinos'=>function($query) use ($ciudad) { $query->where('nombre', $ciudad);}])->get();
-        return view('page.destinations-show', compact('destinos', 'paquetes_de','paquete'));
+        return view('page.destinations-show', compact('destinos', 'paquetes_de','paquete', 'ciudad'));
     }
     public function tours()
     {

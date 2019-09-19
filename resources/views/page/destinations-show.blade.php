@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row justify-content-center align-items-center mb-5">
                     <div class="col-12 text-center">
-                        <h2 class="display-4 text-white font-weight-bold">Peru Reiseziele</h2>
+                        <h2 class="display-4 text-white font-weight-bold">{{ucwords(strtolower($ciudad))}} Reiseziele</h2>
                         <i class="fas fa-angle-down fa-6x text-white"></i>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <h1 class="text-red-primary display-4 text-red font-weight-bold">Peru aReiseziele</h1>
+                    <h1 class="text-red-primary display-4 text-red font-weight-bold">{{ucwords(strtolower($ciudad))}} Reiseziele</h1>
                     <p class="h4 text-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </div>
             </div>
