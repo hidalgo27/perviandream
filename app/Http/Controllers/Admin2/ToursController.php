@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\TTour;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ToursController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
+    }
+
+    public function index(Request $request)
+    {
+        $request->user()->authorizeRoles(['user', 'admin']);
+
+        $tour = TTour::all();
+
+        return view('admin.tours', compact('tour'));
     }
 
     /**

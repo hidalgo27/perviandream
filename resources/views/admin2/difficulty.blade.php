@@ -12,7 +12,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb small font-weight-bold p-0 m-0 bg-white">
                                 <li class="breadcrumb-item"><a href="#">1. Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">All Category</li>
+                                <li class="breadcrumb-item active" aria-current="page">All Packages</li>
                             </ol>
                         </nav>
                     </div>
@@ -47,7 +47,7 @@
         <div class="toast bg-primary fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000" style="left: auto; top: 55px; right: 10px;">
             <div class="toast-header">
                 <span data-feather="alert-circle" class="text-success mr-2"></span>
-                <strong class="mr-auto">Category</strong>
+                <strong class="mr-auto">Difficulty</strong>
                 <small>
                     @php
                         date_default_timezone_set('America/Lima');
@@ -68,7 +68,7 @@
         <div class="toast bg-danger fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000" style="left: auto; top: 55px; right: 10px;">
             <div class="toast-header">
                 <span data-feather="alert-circle" class="text-success mr-2"></span>
-                <strong class="mr-auto">Category</strong>
+                <strong class="mr-auto">Difficulty</strong>
                 <small>
                     @php
                         date_default_timezone_set('America/Lima');
@@ -91,29 +91,29 @@
             <div class="table-title m-0">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Manage <b>Category</b></h2>
+                        <h2>Manage <b>Difficulty</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addCategory" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> Add New Category</a>
+                        <a href="#addDifficulty" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> Add New Difficulty</a>
                         <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span data-feather="trash"></span> Delete</a>
                     </div>
                 </div>
             </div>
 
             <!-- add Modal HTML -->
-            <div id="addCategory" class="modal fade">
+            <div id="addDifficulty" class="modal fade">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <form action="{{route('admin_category_store_path')}}" method="post">
+                        <form action="{{route('admin_difficulty_store_path')}}" method="post">
                             @csrf
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Category</h4>
+                                <h4 class="modal-title">Add Difficulty</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Category</label>
-                                    <input type="text" class="form-control" name="txt_category" required>
+                                    <label>Difficulty</label>
+                                    <input type="text" class="form-control" name="txt_difficulty" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
@@ -139,81 +139,81 @@
 								<label for="selectAll"></label>
 							</span>
                     </th>
-                    <th>Category</th>
+                    <th>Difficulty</th>
                     {{--<th>Address</th>--}}
                     <th class="text-center">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($category as $category1)
+                @foreach($difficulty as $difficulty1)
 
-                        <tr>
-                            <td>
+                    <tr>
+                        <td>
                             <span class="custom-checkbox">
                                 <input type="checkbox" id="checkbox1" name="options[]" value="1" >
                                 <label for="checkbox1"></label>
                             </span>
-                            </td>
-                            <td>{{$category1->nombre}} </td>
-                            {{--<td>{{$category1->estado}}</td>--}}
-                            {{--<td>(171) 555-2222</td>--}}
-                            <td class="text-center">
-                                <a href="{{route('admin_category_edit_path', $category1->id)}}" class="edit"><span data-feather="edit"></span></a>
-                                <a href="#delete_category_{{$category1->id}}" class="delete" data-toggle="modal"><span data-feather="trash"></span></a>
-                            </td>
-                        </tr>
-                        <!-- Delete Modal HTML -->
-                        <div id="delete_category_{{$category1->id}}" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="{{route('admin_category_delete_path', $category1->id)}}" method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Delete Included</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Are you sure you want to delete these Records?</p>
-                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <input type="submit" class="btn btn-danger" value="Delete">
-                                        </div>
-                                    </form>
-                                </div>
+                        </td>
+                        <td>{{$difficulty1->nombre}} </td>
+                        {{--<td>{{$difficulty1->estado}}</td>--}}
+                        {{--<td>(171) 555-2222</td>--}}
+                        <td class="text-center">
+                            <a href="#edit_difficulty_{{$difficulty1->id}}" class="edit" data-toggle="modal"><span data-feather="edit"></span></a>
+                            <a href="#delete_difficulty_{{$difficulty1->id}}" class="delete" data-toggle="modal"><span data-feather="trash"></span></a>
+                        </td>
+                    </tr>
+                    <!-- Delete Modal HTML -->
+                    <div id="delete_difficulty_{{$difficulty1->id}}" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="{{route('admin_difficulty_delete_path', $difficulty1->id)}}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Delete Difficulty</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete these Records?</p>
+                                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Edit Modal HTML -->
-                        <div id="edit_category_{{$category1->id}}" class="modal fade">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <form action="{{route('admin_category_update_path', $category1->id)}}" method="post">
-                                        @csrf
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Add Category</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <!-- Edit Modal HTML -->
+                    <div id="edit_difficulty_{{$difficulty1->id}}" class="modal fade">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <form action="{{route('admin_difficulty_update_path', $difficulty1->id)}}" method="post">
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Add Difficulty</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Difficulty</label>
+                                            <input type="text" class="form-control" name="txt_difficulty" required value="{{$difficulty1->nombre}}">
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label>Category</label>
-                                                <input type="text" class="form-control" name="txt_category" required value="{{$category1->nombre}}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea name="txta_descripcion" rows="6" class="form-control">{{$category1->descripcion}}</textarea>
-                                            </div>
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea name="txta_descripcion" rows="6" class="form-control">{{$difficulty1->descripcion}}</textarea>
                                         </div>
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <input type="submit" class="btn btn-success" value="Add">
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                        <input type="submit" class="btn btn-success" value="Add">
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
 
                 @endforeach

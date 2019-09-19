@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\TDificultad;
+use App\TIncluye;
+use App\TItinerario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DifficultyController extends Controller
+class IncludedController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class DifficultyController extends Controller
      */
     public function index()
     {
-        $difficulty = TDificultad::all()->sortBy('dia');
-        return view('admin.difficulty', compact('difficulty'));
+        $included = TIncluye::all()->sortBy('dia');
+        return view('admin.included', compact('included'));
     }
 
     /**
@@ -26,7 +27,7 @@ class DifficultyController extends Controller
      */
     public function create()
     {
-//        return view('admin.included-create');
+        return view('admin.included-create');
     }
 
     /**
@@ -37,17 +38,17 @@ class DifficultyController extends Controller
      */
     public function store(Request $request)
     {
-        $difficulty = $_POST["txt_difficulty"];
-        $descripcion = $_POST["txta_descripcion"];
+        $included = $_POST["txt_included"];
+        $estado = $_POST["rdo_estado"];
 
-        if ($request->filled(['txt_difficulty'])){
+        if ($request->filled(['txt_included', 'rdo_estado'])){
 
-            $difficulty2 = new TDificultad();
-            $difficulty2->nombre = $difficulty;
-            $difficulty2->descripcion = $descripcion;
-            $difficulty2->save();
+            $included2 = new TIncluye();
+            $included2->incluye = $included;
+            $included2->estado = $estado;
+            $included2->save();
 
-            return redirect(route('admin_difficulty_index_path'))->with('status', 'Difficulty created successfully');
+            return redirect(route('admin_included_index_path'))->with('status', 'Included created successfully');
 
         }else{
             return "false";
@@ -85,17 +86,17 @@ class DifficultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $difficulty = $_POST["txt_difficulty"];
-        $descripcion = $_POST["txta_descripcion"];
+        $included = $_POST["txt_included"];
+        $estado = $_POST["rdo_estado"];
 
-        if ($request->filled(['txt_difficulty', 'txta_descripcion'])){
+        if ($request->filled(['txt_included', 'rdo_estado'])){
 
-            $difficulty2 = TDificultad::FindOrFail($id);
-            $difficulty2->nombre = $difficulty;
-            $difficulty2->descripcion = $descripcion;
-            $difficulty2->save();
+            $included2 = TIncluye::FindOrFail($id);
+            $included2->incluye = $included;
+            $included2->estado = $estado;
+            $included2->save();
 
-            return redirect(route('admin_difficulty_index_path'))->with('status', 'Successfully updated difficulty');
+            return redirect(route('admin_included_index_path'))->with('status', 'Successfully updated included');
 
         }else{
             return "false";
@@ -110,8 +111,8 @@ class DifficultyController extends Controller
      */
     public function destroy($id)
     {
-        $difficulty2=TDificultad::find($id);
-        $difficulty2->delete();
-        return redirect(route('admin_difficulty_index_path'))->with('delete', 'Difficulty successfully removed');
+        $included2=TIncluye::find($id);
+        $included2->delete();
+        return redirect(route('admin_included_index_path'))->with('delete', 'Included successfully removed');
     }
 }

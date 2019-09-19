@@ -12,42 +12,21 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb small font-weight-bold p-0 m-0 bg-white">
                                 <li class="breadcrumb-item"><a href="#">1. Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">All Category</li>
+                                <li class="breadcrumb-item active" aria-current="page">All Videos</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
             </div>
         </section>
-        {{--<div class="btn-toolbar mb-2 mb-md-0">--}}
-        {{--<div class="btn-group mr-2">--}}
-        {{--<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>--}}
-        {{--<button type="button" class="btn btn-sm btn-outline-secondary">Export</button>--}}
-        {{--</div>--}}
-        {{--<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">--}}
-        {{--<span data-feather="calendar"></span>--}}
-        {{--This week--}}
-        {{--</button>--}}
-        {{--</div>--}}
+
     </div>
 
-    {{--<h2>Section title</h2>--}}
-    {{--@if(Auth::user()->hasRole('admin'))--}}
-    {{--<div>Acceso como administrador</div>--}}
-    {{--@else--}}
-    {{--<div>Acceso usuario</div>--}}
-    {{--@endif--}}
-    {{--You are logged in!--}}
-    {{--<div class="row">--}}
-    {{--<div class="col">--}}
-    {{--sd--}}
-    {{--</div>--}}
-    {{--</div>--}}
     @if (session('status'))
         <div class="toast bg-primary fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000" style="left: auto; top: 55px; right: 10px;">
             <div class="toast-header">
                 <span data-feather="alert-circle" class="text-success mr-2"></span>
-                <strong class="mr-auto">Category</strong>
+                <strong class="mr-auto">Video</strong>
                 <small>
                     @php
                         date_default_timezone_set('America/Lima');
@@ -68,7 +47,7 @@
         <div class="toast bg-danger fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000" style="left: auto; top: 55px; right: 10px;">
             <div class="toast-header">
                 <span data-feather="alert-circle" class="text-success mr-2"></span>
-                <strong class="mr-auto">Category</strong>
+                <strong class="mr-auto">Video</strong>
                 <small>
                     @php
                         date_default_timezone_set('America/Lima');
@@ -91,10 +70,10 @@
             <div class="table-title m-0">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Manage <b>Category</b></h2>
+                        <h2>Manage <b>Video</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addCategory" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> Add New Category</a>
+                        <a href="#addCategory" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> Add New Video</a>
                         <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span data-feather="trash"></span> Delete</a>
                     </div>
                 </div>
@@ -104,21 +83,22 @@
             <div id="addCategory" class="modal fade">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <form action="{{route('admin_category_store_path')}}" method="post">
+                        <form action="{{route('admin_video_store_path')}}" method="post">
                             @csrf
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Category</h4>
+                                <h4 class="modal-title">Add Video</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Category</label>
-                                    <input type="text" class="form-control" name="txt_category" required>
+                                    <label class="font-weight-bold text-secondary small" for="txt_title">Title Video</label>
+                                    <input type="text" name="txt_title" class="form-control font-weight-bold" id="txt_title">
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea name="txta_descripcion" class="form-control"></textarea>
+                                    <label class="font-weight-bold text-secondary small" for="txt_codigo">Code Video</label>
+                                    <input type="text" name="txt_codigo" class="form-control font-weight-bold" id="txt_codigo">
                                 </div>
+
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -129,6 +109,7 @@
                     </div>
                 </div>
             </div>
+
 
             <table class="table table-striped table-hover small table-sm font-weight-bold text-secondary">
                 <thead>
@@ -145,75 +126,46 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($category as $category1)
-
-                        <tr>
-                            <td>
+                @foreach($video as $videos)
+                    <tr>
+                        <td>
                             <span class="custom-checkbox">
                                 <input type="checkbox" id="checkbox1" name="options[]" value="1" >
                                 <label for="checkbox1"></label>
                             </span>
-                            </td>
-                            <td>{{$category1->nombre}} </td>
-                            {{--<td>{{$category1->estado}}</td>--}}
-                            {{--<td>(171) 555-2222</td>--}}
-                            <td class="text-center">
-                                <a href="{{route('admin_category_edit_path', $category1->id)}}" class="edit"><span data-feather="edit"></span></a>
-                                <a href="#delete_category_{{$category1->id}}" class="delete" data-toggle="modal"><span data-feather="trash"></span></a>
-                            </td>
-                        </tr>
-                        <!-- Delete Modal HTML -->
-                        <div id="delete_category_{{$category1->id}}" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="{{route('admin_category_delete_path', $category1->id)}}" method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Delete Included</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Are you sure you want to delete these Records?</p>
-                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <input type="submit" class="btn btn-danger" value="Delete">
-                                        </div>
-                                    </form>
-                                </div>
+                        </td>
+                        <td><a href="{{route('admin_video_edit_path', $videos->id)}}"><img src="{{asset('images/video-testimonio/'.$videos->imagen.'')}}" alt="" width="100" class="mr-4">{{$videos->titulo}}</a></td>
+                        {{--<td>{{$videos->estado}}</td>--}}
+                        {{--<td>(171) 555-2222</td>--}}
+                        <td class="text-center">
+                            <a href="{{route('admin_video_edit_path', $videos->id)}}" class="edit"><span data-feather="edit"></span></a>
+                            <a href="#delete_video_{{$videos->id}}" class="delete" data-toggle="modal"><span data-feather="trash"></span></a>
+                        </td>
+                    </tr>
+                    <!-- Delete Modal HTML -->
+                    <div id="delete_video_{{$videos->id}}" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="{{route('admin_video_delete_path', $videos->id)}}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Delete Video</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete these Records?</p>
+                                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Edit Modal HTML -->
-                        <div id="edit_category_{{$category1->id}}" class="modal fade">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <form action="{{route('admin_category_update_path', $category1->id)}}" method="post">
-                                        @csrf
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Add Category</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label>Category</label>
-                                                <input type="text" class="form-control" name="txt_category" required value="{{$category1->nombre}}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea name="txta_descripcion" rows="6" class="form-control">{{$category1->descripcion}}</textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <input type="submit" class="btn btn-success" value="Add">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
 
 
                 @endforeach

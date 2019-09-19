@@ -20,60 +20,30 @@
             </div>
         </section>
     </div>
-    <form action="{{route('admin_destinations_store_path')}}" method="post">
+    <form action="{{route('admin_video_store_path')}}" method="post">
         @csrf
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label class="font-weight-bold text-secondary small" for="txt_destination">Destination</label>
-                    <input type="text" name="txt_destination" class="form-control font-weight-bold" id="txt_destination" placeholder="" value="{{old('txt_codigo')}}">
+                    <label class="font-weight-bold text-secondary small" for="txt_title">Title Video</label>
+                    <input type="text" name="txt_title" class="form-control font-weight-bold" id="txt_title">
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label class="font-weight-bold text-secondary small" for="txt_country">Country</label>
-                    <input type="text" name="txt_country" class="form-control font-weight-bold" id="txt_country">
+                    <label class="font-weight-bold text-secondary small" for="txt_codigo">Code Video</label>
+                    <input type="text" name="txt_codigo" class="form-control font-weight-bold" id="txt_codigo">
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col">
-                <h3 class="font-weight-bold text-secondary small">Short</h3>
-                <div class="form-group">
-                    <textarea class="textarea-package" name="txta_short"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h3 class="font-weight-bold text-secondary small">Extended</h3>
-                <div class="form-group">
-                    <textarea class="textarea-package" name="txta_extended"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h3 class="font-weight-bold text-secondary small">History</h3>
-                <div class="form-group">
-                    <textarea class="textarea-package" name="txta_history"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h3 class="font-weight-bold text-secondary small">Geography</h3>
-                <div class="form-group">
-                    <textarea class="textarea-package" name="txta_geography"></textarea>
-                </div>
-            </div>
-        </div>
         <hr>
-        <div class="row mb-3">
+        <div class="row my-5">
             <div class="col text-center">
                 {{--<a href="" class="btn btn-primary font-weight-bold">Update Package</a>--}}
-                <button type="submit" class="btn btn-primary font-weight-bold">Create itinerary</button>
+                <button type="submit" class="btn btn-primary font-weight-bold">Create video</button>
             </div>
         </div>
     </form>

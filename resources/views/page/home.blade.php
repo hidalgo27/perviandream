@@ -126,7 +126,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                             <div class="os-animation" data-os-animation="fadeInLeft" data-os-animation-delay="0s">
-                                <h4 class="text-secondary font-weight-bold">Willkommen Auf  KOLIBRI PERU TRAVEL</h4>
+                                <h4 class="font-weight-bold">Willkommen Auf KOLIBRI PERU TRAVEL</h4>
                                 <hr>
                             </div>
                             <div class="os-animation" data-os-animation="fadeInLeft" data-os-animation-delay="0.2s">
@@ -146,30 +146,33 @@
             </div><!-- /.container -->
     </section><!-- /.item -->
 
-    <section class="my-5 bg-light py-5">
+    <section class="bg-white pt-3 pb-5">
         <div class="container">
 
             <div class="row">
-                <div class="col text-center margin-bottom-30 os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
-                    <h2 class="font-weight-bold text-secondary">What it can do for you</h2>
+                <div class="col text-center my-4 os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+                    <h2 class="font-weight-bold h1">What it can do for you</h2>
 
                     <div class="sec-title-div-3"></div>
-                    <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt<br> ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
+                    <p class="lead font-weight-normal text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt<br> ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
                 </div>
             </div>
 
             <div class="row">
                 @foreach($paquete_categoria as $paquete_categorias)
+                    @if ($paquete_categorias->paquete->estado == 1)
+
+
                 <div class="col d-flex text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
                     <div class="gallary-1">
                         <div class="row">
                             <div class="col">
-                                <a href="{{route('itinerary_path', [str_replace(' ','-',strtolower($paquete_categorias->paquete->titulo)), $paquete_categorias->paquete->duracion])}}"><img src="{{asset('images/mapas/'.$paquete_categorias->paquete->imagen.'')}}" alt="content area" class="w-100"></a>
+                                <a href="{{route('itinerary_path', [str_replace(' ','-',strtolower($paquete_categorias->paquete->titulo)), $paquete_categorias->paquete->duracion])}}"><img src="{{asset('images/mapas/'.$paquete_categorias->paquete->imagen.'')}}" alt="content area" class="w-100 rounded"></a>
                             </div>
                         </div>
                         <div class="row px-3">
                             <div class="col">
-                                <h4 class="text-left my-3">{{ucwords(strtolower($paquete_categorias->paquete->titulo))}}</h4>
+                                <h5 class="text-left font-weight-bold my-3">{{ucwords(strtolower($paquete_categorias->paquete->titulo))}}</h5>
                             </div>
                         </div>
                         <div class="row px-3 pb-3">
@@ -181,17 +184,29 @@
                             </div>
                             <div class="col-9">
                                 <p class="text-left m-0 font-weight-bold text-secondary">Destinations:</p>
-                                <p class="text-left m-0 small text-red-primary">Lima, Cusco, Arequipa, Machu Picchu.</p>
+                                <p class="text-left m-0 small text-red-primary">
+                                    @php
+                                        $m = 1;
+                                        $num_des = count($paquete_destinos->where('idpaquetes',$paquete_categorias->paquete->id));
+                                    @endphp
+                                    @foreach($paquete_destinos->where('idpaquetes',$paquete_categorias->paquete->id) as $paquete_destino)
+                                        @if(isset($paquete_destino->destinos->nombre))
+                                            {{ucwords(strtolower($paquete_destino->destinos->nombre))}}@if($m < $num_des),@else.@endif
+                                            @php $m++; @endphp
+                                        @endif
+                                    @endforeach
+                                </p>
                             </div>
                         </div>
 
                     </div>
                 </div><!-- /.col-md-4 col -->
+                    @endif
                 @endforeach
             </div><!-- /.row -->
             <div class="row">
                 <div class="col text-center">
-                    <a href="{{route('packages_path')}}" class="btn btn-lg btn-info">View All Packages</a>
+                    <a href="{{route('packages_path')}}" class="btn btn-lg btn-primary font-weight-bold">View All Packages</a>
                 </div>
             </div>
 
@@ -323,17 +338,6 @@
         </div>
     </section>
 
-    <section class="bg-white pt-3 pb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <h2 class="font-weight-bold text-secondary">Welcome to The World’s #1 KOLIBRI Site</h2>
-                    <div class="sec-title-div-3"></div>
-                    <p class="font-weight-normal lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore fugit mollitia neque officia quam quis reiciendis tenetur vero voluptatibus voluptatum. Architecto dolor eligendi eum inventore ipsum odio porro ut voluptatibus!</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="pt-5 bg-light d-none">
         <div class="container">
@@ -345,15 +349,23 @@
         </div>
     </section>
 
-    <section class="bg-white pb-5">
-        <div class="container pb-5">
+    <section class="bg-light py-5">
+        <div class="container">
             <!------------------ Hover Effect Style : Demo - 16 --------------->
             <div class="container">
+                <div class="row">
+                    <div class="col my-4 text-center">
+                        <h2 class="font-weight-bold h1">Welcome to The World’s #1 KOLIBRI Site</h2>
+                        <div class="sec-title-div-3"></div>
+                        <p class="lead font-weight-normal text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore fugit mollitia neque officia quam quis reiciendis tenetur vero voluptatibus voluptatum. Architecto dolor eligendi eum inventore ipsum odio porro ut voluptatibus!</p>
+                    </div>
+                </div>
+
                 <div class="row">
                     @foreach($categoria as $categorias)
                     <div class="col">
                         <div class="box16">
-                            <img src="{{asset('images/banners/authentish.jpg')}}" class="w-100">
+                            <img src="{{asset('images/category/'.$categorias->imagen)}}" class="w-100 rounded shadow-sm">
                             <div class="box-content">
                                 <h3 class="title">{{ucwords(strtolower($categorias->nombre))}}</h3>
                                 <span class="post">

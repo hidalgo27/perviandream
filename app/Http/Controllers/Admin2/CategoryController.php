@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\TDificultad;
+use App\TCategoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DifficultyController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class DifficultyController extends Controller
      */
     public function index()
     {
-        $difficulty = TDificultad::all()->sortBy('dia');
-        return view('admin.difficulty', compact('difficulty'));
+        $category = TCategoria::all()->sortBy('dia');
+        return view('admin.category', compact('category'));
     }
 
     /**
@@ -37,17 +37,17 @@ class DifficultyController extends Controller
      */
     public function store(Request $request)
     {
-        $difficulty = $_POST["txt_difficulty"];
+        $category = $_POST["txt_category"];
         $descripcion = $_POST["txta_descripcion"];
 
-        if ($request->filled(['txt_difficulty'])){
+        if ($request->filled(['txt_category'])){
 
-            $difficulty2 = new TDificultad();
-            $difficulty2->nombre = $difficulty;
-            $difficulty2->descripcion = $descripcion;
-            $difficulty2->save();
+            $category2 = new TCategoria();
+            $category2->nombre = $category;
+            $category2->descripcion = $descripcion;
+            $category2->save();
 
-            return redirect(route('admin_difficulty_index_path'))->with('status', 'Difficulty created successfully');
+            return redirect(route('admin_category_index_path'))->with('status', 'Category created successfully');
 
         }else{
             return "false";
@@ -85,17 +85,17 @@ class DifficultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $difficulty = $_POST["txt_difficulty"];
+        $category = $_POST["txt_category"];
         $descripcion = $_POST["txta_descripcion"];
 
-        if ($request->filled(['txt_difficulty', 'txta_descripcion'])){
+        if ($request->filled(['txt_category'])){
 
-            $difficulty2 = TDificultad::FindOrFail($id);
-            $difficulty2->nombre = $difficulty;
-            $difficulty2->descripcion = $descripcion;
-            $difficulty2->save();
+            $category2 = TCategoria::FindOrFail($id);
+            $category2->nombre = $category;
+            $category2->descripcion = $descripcion;
+            $category2->save();
 
-            return redirect(route('admin_difficulty_index_path'))->with('status', 'Successfully updated difficulty');
+            return redirect(route('admin_category_index_path'))->with('status', 'Successfully updated category');
 
         }else{
             return "false";
@@ -110,8 +110,8 @@ class DifficultyController extends Controller
      */
     public function destroy($id)
     {
-        $difficulty2=TDificultad::find($id);
-        $difficulty2->delete();
-        return redirect(route('admin_difficulty_index_path'))->with('delete', 'Difficulty successfully removed');
+        $category2=TCategoria::find($id);
+        $category2->delete();
+        return redirect(route('admin_category_index_path'))->with('delete', 'Category successfully removed');
     }
 }

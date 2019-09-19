@@ -21,10 +21,11 @@ class HomepageController extends Controller
     public function index()
     {
         //
-        $paquete_categoria = TPaqueteCategoria::with('paquete', 'categoria')->take(3)->get();
+        $paquete_categoria = TPaqueteCategoria::with('paquete', 'categoria')->get();
         $categoria = TCategoria::all()->take(3);
         $tour = TTour::all();
-        return view('page.home', compact('paquete_categoria','categoria','tour'));
+        $paquete_destinos = TPaqueteDestino::with('destinos')->get();
+        return view('page.home', compact('paquete_categoria','categoria','tour','paquete_destinos'));
     }
     public function destinations()
     {

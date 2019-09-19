@@ -497,7 +497,8 @@
                                     @foreach($noincluye as $noincluded)
                                         @forelse  ($paquete_no_incluye->where('idnoincluye', $noincluded->id) as $paquete_noincluded)
                                             <span class="custom-checkbox d-block pr-3 text-ellipsis">
-                                                <input type="checkbox" id="no_incluye_{{$noincluded->id}}" name="no_incluye[]" value="{{$noincluded->id}}" checked>
+                                                <input type="checkbox" id="no_incluye_{{$noincluded->id}}" name="no_incluye[]" value="{{$noincluded->id}}"
+                                                >
                                                 <label for="no_incluye_{{$noincluded->id}}" data-toggle="tooltip" data-placement="left" title="{{ucwords(strtolower($noincluded->noincluye))}}">{{ucwords(strtolower($noincluded->noincluye))}}</label>
                                             </span>
                                         @empty
@@ -664,7 +665,7 @@
         });
 
     </script>
-    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=4im5y0hsu2i10v7je2aecag5d41lh7hc0oh1mpj0lgv8pmgj"></script>
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=m4amx6h3rsnmj9whskr1vn3m6mpv7bi6qwwscvtbam4h0uic "></script>
     <script>
         tinymce.init({
             selector: 'textarea#textarea-package',
@@ -723,7 +724,7 @@
         function duration($duration){
             if ($duration){
                 var $duration1 = $duration;
-                $("#contenido").load("/admin/package/load/"+49+"/"+$duration1+"");
+                $("#contenido").load("../../admin/package/load/"+49+"/"+$duration1+"");
             }
         }
 

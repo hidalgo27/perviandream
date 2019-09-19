@@ -8,7 +8,7 @@
         <div class="toast bg-primary fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000" style="left: auto; top: 55px; right: 10px;">
             <div class="toast-header">
                 <span data-feather="alert-circle" class="text-success mr-2"></span>
-                <strong class="mr-auto">Itinerary</strong>
+                <strong class="mr-auto">Video</strong>
                 <small>
                     @php
                         date_default_timezone_set('America/Lima');
@@ -32,7 +32,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb small font-weight-bold p-0 m-0 bg-white">
                                 <li class="breadcrumb-item"><a href="#">1. Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">All Packages</li>
+                                <li class="breadcrumb-item active" aria-current="page">Video Testimonios</li>
                             </ol>
                         </nav>
                     </div>
@@ -40,71 +40,57 @@
             </div>
         </section>
     </div>
-    @foreach($itinerary as $itinerario)
-    <form action="{{route('admin_itinerary_update_path', $itinerario->id)}}" method="post">
+    @foreach($video as $videos)
+    <form action="{{route('admin_video_update_path', $videos->id)}}" method="post">
         @csrf
         <div class="row">
-            <div class="col-2">
-                <div class="form-group">
-                    <label class="font-weight-bold text-secondary small" for="txt_codigo">Code</label>
-                    <input type="text" name="txt_codigo" class="form-control font-weight-bold" id="txt_codigo" placeholder="" value="{{$itinerario->codigo}}">
-                </div>
-            </div>
             <div class="col">
                 <div class="form-group">
-                    <label class="font-weight-bold text-secondary small" for="txt_title">Title Package</label>
-                    <input type="text" name="txt_title" class="form-control font-weight-bold" id="txt_title" value="{{$itinerario->titulo}}">
+                    <label class="font-weight-bold text-secondary small" for="txt_title">Title Video</label>
+                    <input type="text" name="txt_title" class="form-control font-weight-bold" id="txt_title" value="{{$videos->titulo}}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="font-weight-bold text-secondary small" for="txt_codigo">Code Video</label>
+                    <input type="text" name="txt_codigo" class="form-control font-weight-bold" id="txt_codigo" value="{{$videos->codigo}}">
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col">
-                <h3 class="font-weight-bold text-secondary small">Short</h3>
-                <div class="form-group">
-                    <textarea class="textarea-package" name="txta_short">{{$itinerario->resumen}}</textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h3 class="font-weight-bold text-secondary small">Extended</h3>
-                <div class="form-group">
-                    <textarea class="textarea-package" name="txta_extended">{{$itinerario->descripcion}}</textarea>
-                </div>
-            </div>
-        </div>
         <hr>
-        <div class="row mb-3">
+        <div class="row my-5">
             <div class="col text-center">
                 {{--<a href="" class="btn btn-primary font-weight-bold">Update Package</a>--}}
-                <button type="submit" class="btn btn-primary font-weight-bold">Create itinerary</button>
+                <button type="submit" class="btn btn-primary font-weight-bold">Update</button>
             </div>
         </div>
     </form>
-    <div class="row my-5">
-        @foreach($itinerario->itinerario_imagen as $imagen)
-            <div class="col-2 text-center">
-                <img src="{{asset('images/itinerario/'.$imagen->nombre.'')}}" alt="" class="img-thumbnail w-100 mb-2">
-                <form action="{{route('admin_iitinerary_image_delete_form_path')}}" method="post">
+    @if ($videos->imagen)
+        <div class="row my-5 justify-content-center">
+            <div class="col-6 text-center">
+                <img src="{{asset('images/video-testimonio/'.$videos->imagen.'')}}" alt="" class="img-thumbnail w-100 mb-2">
+                <form action="{{route('admin_video_image_delete_form_path')}}" method="post">
                     {{--@method('DELETE')--}}
                     @csrf
-                    <input type="hidden" name="id_itinerario" value="{{$itinerario->id}}">
-                    <input type="hidden" name="filename" value="{{$imagen->nombre}}">
+                    <input type="hidden" name="id_video" value="{{$videos->id}}">
                     <button type="submit" class="btn btn-xs btn-danger">Eliminar</button>
                 </form>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @else
     <div class="row my-5">
         <div class="col">
-            <form method="post" action="{{route('admin_itinerary_image_store_path')}}" enctype="multipart/form-data"
-                  class="dropzone" id="dropzone">
-                <input type="hidden" value="{{$itinerario->id}}" name="id_itinerary_file">
+            <form method="post" action="{{route('admin_video_image_store_path')}}" enctype="multipart/form-data"
+                  class="dropzone" id="dropzone3">
+                <input type="hidden" value="{{$videos->id}}" name="id_video_file">
                 @csrf
             </form>
         </div>
     </div>
+    @endif
     @endforeach
 @endsection
 @push('scripts')
@@ -125,44 +111,13 @@
                 '//www.tiny.cloud/css/codepen.min.css'
             ]
         });
-        $(document).ready(function(){
-            $('.toast').toast('show');
-        });
-    </script>
 
-    <script>
-        // Dropzone.autoDiscover = false;
-        // jQuery(document).ready(function() {
-        //     $("#dropzone").dropzone({
-        //         url: "../../../../admin/package/upload_file",
-        //         dictDefaultMessage: "Drop files here or<br>click to upload..."
-        //     });
-        // });
-        {{--Dropzone.createThumbnailFromUrl(file, "{{asset('images/destinations/puno.jpg')}}", callback, crossOrigin);--}}
-        Dropzone.options.dropzone =
-            {
-                {{--init: function() {--}}
-                    {{--thisDropzone = this;--}}
-                    {{--// var name = file.upload.filename;--}}
-                    {{--<!-- 4 -->--}}
-                    {{--$.get("{{route('admin_itinerary_list_path')}}", function(data) {--}}
-
-                        {{--<!-- 5 -->--}}
-                        {{--$.each(data.images, function(key,value){--}}
-
-                            {{--var mockFile = { name: value.original, size: value.size };--}}
-                            {{--thisDropzone.emit("addedfile", mockFile);--}}
-                            {{--thisDropzone.emit("thumbnail", mockFile, "http://new-goto.nu/images/itinerario/"+value.original);--}}
-                            {{--thisDropzone.emit("complete", mockFile);--}}
-                            {{--var existingFileCount = 1; // The number of files already uploaded--}}
-                            {{--thisDropzone.options.maxFiles = thisDropzone.options.maxFiles - existingFileCount;--}}
-
-                        {{--});--}}
-
-                    {{--});--}}
-                {{--},--}}
+        Dropzone.autoDiscover = false;
+        jQuery(document).ready(function() {
+            $("#dropzone3").dropzone({
 
                 maxFilesize: 12,
+                maxFiles: 1,
                 renameFile: function(file) {
                     var dt = new Date();
                     var time = dt.getTime();
@@ -172,14 +127,14 @@
                 addRemoveLinks: true,
                 timeout: 50000,
                 removedfile: function(file){
-                var name = file.upload.filename;
+                    var name = file.upload.filename;
 
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                         },
                         type: 'POST',
-                        url: "{{ route('admin_iitinerary_mage_delete_path') }}",
+                        url: "{{ route('admin_video_image_delete_path') }}",
                         data: {filename: name},
                         success: function (data) {
                             console.log("File has been successfully removed!!");
@@ -193,12 +148,19 @@
                         fileRef.parentNode.removeChild(file.previewElement) : void 0;
                 },
 
-                success: function (file, response) {
-                    console.log(response);
-                },
-                error: function (file, response) {
-                    return false;
-                },
-            };
+                // success: function (file, response) {
+                //     console.log(response);
+                // },
+                // error: function (file, response) {
+                //     return false;
+                // },
+
+            });
+
+        });
+
+        $(document).ready(function(){
+            $('.toast').toast('show');
+        });
     </script>
 @endpush

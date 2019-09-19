@@ -20,29 +20,34 @@
             </div>
         </section>
         {{--<div class="btn-toolbar mb-2 mb-md-0">--}}
-            {{--<div class="btn-group mr-2">--}}
-                {{--<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>--}}
-                {{--<button type="button" class="btn btn-sm btn-outline-secondary">Export</button>--}}
-            {{--</div>--}}
-            {{--<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">--}}
-                {{--<span data-feather="calendar"></span>--}}
-                {{--This week--}}
-            {{--</button>--}}
+        {{--<div class="btn-group mr-2">--}}
+        {{--<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>--}}
+        {{--<button type="button" class="btn btn-sm btn-outline-secondary">Export</button>--}}
+        {{--</div>--}}
+        {{--<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">--}}
+        {{--<span data-feather="calendar"></span>--}}
+        {{--This week--}}
+        {{--</button>--}}
         {{--</div>--}}
     </div>
 
     {{--<h2>Section title</h2>--}}
     {{--@if(Auth::user()->hasRole('admin'))--}}
-        {{--<div>Acceso como administrador</div>--}}
+    {{--<div>Acceso como administrador</div>--}}
     {{--@else--}}
-        {{--<div>Acceso usuario</div>--}}
+    {{--<div>Acceso usuario</div>--}}
     {{--@endif--}}
     {{--You are logged in!--}}
+    {{--<div class="row">--}}
+        {{--<div class="col">--}}
+            {{--sd--}}
+        {{--</div>--}}
+    {{--</div>--}}
     @if (session('status'))
-        <div class="toast bg-primary fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000" style="left: auto; top: 55px; right: 10px;">
+        <div class="toast bg-primary fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="3000" style="left: auto; top: 55px; right: 10px;">
             <div class="toast-header">
                 <span data-feather="alert-circle" class="text-success mr-2"></span>
-                <strong class="mr-auto">Package</strong>
+                <strong class="mr-auto">Itinerary</strong>
                 <small>
                     @php
                         date_default_timezone_set('America/Lima');
@@ -63,7 +68,7 @@
         <div class="toast bg-danger fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000" style="left: auto; top: 55px; right: 10px;">
             <div class="toast-header">
                 <span data-feather="alert-circle" class="text-success mr-2"></span>
-                <strong class="mr-auto">Package</strong>
+                <strong class="mr-auto">Itinerary</strong>
                 <small>
                     @php
                         date_default_timezone_set('America/Lima');
@@ -79,15 +84,17 @@
             </div>
         </div>
     @endif
+
+
     <div class="">
         <div class="table-wrapper m-0 p-0">
             <div class="table-title m-0">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Manage <b>Packages</b></h2>
+                        <h2>Manage <b>Itinerary</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="{{route('admin_package_create_path')}}" class="btn btn-success"><span data-feather="plus-circle"></span> Add New Package</a>
+                        <a href="{{route('admin_itinerary_create_path')}}" class="btn btn-success"><span data-feather="plus-circle"></span> Add New Itinerary</a>
                         <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span data-feather="trash"></span> Delete</a>
                     </div>
                 </div>
@@ -102,19 +109,14 @@
 							</span>
                     </th>
                     <th>Code</th>
-                    <th>Name</th>
+                    <th>Title</th>
                     {{--<th>Address</th>--}}
-                    <th>Status</th>
                     <th class="text-center">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($paquete as $paquetes)
-                    @if ($paquetes->estado == 0)
-                        @php $estado_paquete = ""; @endphp
-                    @else
-                        @php $estado_paquete = "checked"; @endphp
-                    @endif
+                @foreach($itinerary as $itinerario)
+
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -122,20 +124,19 @@
                                 <label for="checkbox1"></label>
                             </span>
                         </td>
-                        <td>{{$paquetes->codigo}} </td>
-                        <td><a href="{{route('admin_package_edit_path', $paquetes->id)}}">{{$paquetes->titulo}}</a></td>
-                        <td><input type="checkbox" {{$estado_paquete}} data-toggle="toggle" data-size="xs"></td>
+                        <td>{{$itinerario->codigo}} </td>
+                        <td>{{$itinerario->titulo}}</td>
                         {{--<td>(171) 555-2222</td>--}}
                         <td class="text-center">
-                            <a href="{{route('admin_package_edit_path', $paquetes->id)}}" class="edit"><span data-feather="edit-3"></span></a>
-                            <a href="#delete_package_{{$paquetes->id}}" class="delete" data-toggle="modal"><span data-feather="trash"></span></a>
-                            <a href="{{route('admin_inquire_index_path', $paquetes->id)}}"><span data-feather="code"></span></a>
+                            <a href="{{route('admin_itinerary_edit_path', $itinerario->id)}}" class="edit"><span data-feather="edit"></span></a>
+                            <a href="#delete_itinerary_{{$itinerario->id}}" class="delete" data-toggle="modal"><span data-feather="trash"></span></a>
                         </td>
                     </tr>
-                    <div id="delete_package_{{$paquetes->id}}" class="modal fade">
+                    <!-- Delete Modal HTML -->
+                    <div id="delete_itinerary_{{$itinerario->id}}" class="modal fade">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="{{route('admin_package_delete_path', $paquetes->id)}}" method="post">
+                                <form action="{{route('admin_itinerary_delete_path', $itinerario->id)}}" method="post">
                                     @method('DELETE')
                                     @csrf
                                     <div class="modal-header">
@@ -154,6 +155,7 @@
                             </div>
                         </div>
                     </div>
+
                 @endforeach
                 </tbody>
             </table>
@@ -241,27 +243,7 @@
             </div>
         </div>
     </div>
-    <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">Delete Employee</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to delete these Records?</p>
-                        <p class="text-warning"><small>This action cannot be undone.</small></p>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
 @endsection
 @push('scripts')
     <script type="text/javascript">

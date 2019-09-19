@@ -169,6 +169,39 @@ Route::delete('admin/destinations/edit/{id}', [
     'uses' => 'Admin\DestinationsController@destroy',
     'as' => 'admin_destinations_delete_path',
 ]);
+
+
+
+
+Route::post('admin/destinations/image/image_destinations_slider_store', [
+    'uses' => 'Admin\DestinationsController@image_destinations_slider_store',
+    'as' => 'admin_image_destinations_slider_store_path',
+]);
+Route::post('admin/destinations/image/image_destinations_slider_delete', [
+    'uses' => 'Admin\DestinationsController@image_destinations_slider_delete',
+    'as' => 'admin_destinations_slider_delete_path',
+]);
+Route::post('admin/destinations/image/image_destinations_slider_form_delete', [
+    'uses' => 'Admin\DestinationsController@image_destinations_slider_form_delete',
+    'as' => 'admin_destinations_slider_form_delete_path',
+]);
+
+Route::post('admin/destinations/image/image_destinations_image_store', [
+    'uses' => 'Admin\DestinationsController@image_destinations_image_store',
+    'as' => 'admin_image_destinations_image_store_path',
+]);
+Route::post('admin/destinations/image/image_destinations_image_delete', [
+    'uses' => 'Admin\DestinationsController@image_destinations_image_delete',
+    'as' => 'admin_destinations_image_delete_path',
+]);
+Route::post('admin/destinations/image/image_delete_form', [
+    'uses' => 'Admin\DestinationsController@image_destinations_image_form_delete',
+    'as' => 'admin_destinations_image_form_delete_path',
+]);
+
+
+
+
 //included
 Route::get('admin/included', [
     'uses' => 'Admin\IncludedController@index',
@@ -208,6 +241,40 @@ Route::get('admin/category', [
     'uses' => 'Admin\CategoryController@index',
     'as' => 'admin_category_index_path',
 ]);
+Route::get('admin/category/edit/{id}', [
+    'uses' => 'Admin\CategoryController@edit',
+    'as' => 'admin_category_edit_path',
+]);
+
+
+Route::post('admin/category/image/image_category_slider_store', [
+    'uses' => 'Admin\CategoryController@image_category_slider_store',
+    'as' => 'admin_image_category_slider_store_path',
+]);
+Route::post('admin/category/image/image_category_slider_delete', [
+    'uses' => 'Admin\CategoryController@image_category_slider_delete',
+    'as' => 'admin_category_slider_delete_path',
+]);
+Route::post('admin/category/image/image_category_slider_form_delete', [
+    'uses' => 'Admin\CategoryController@image_category_slider_form_delete',
+    'as' => 'admin_category_slider_form_delete_path',
+]);
+
+Route::post('admin/category/image/image_category_image_store', [
+    'uses' => 'Admin\CategoryController@image_category_image_store',
+    'as' => 'admin_image_category_image_store_path',
+]);
+Route::post('admin/category/image/image_category_image_delete', [
+    'uses' => 'Admin\CategoryController@image_category_image_delete',
+    'as' => 'admin_category_image_delete_path',
+]);
+Route::post('admin/category/image/image_delete_form', [
+    'uses' => 'Admin\CategoryController@image_category_image_form_delete',
+    'as' => 'admin_category_image_form_delete_path',
+]);
+
+
+
 Route::post('admin/category/store', [
     'uses' => 'Admin\CategoryController@store',
     'as' => 'admin_category_store_path',
@@ -237,6 +304,76 @@ Route::delete('admin/difficulty/edit/{id}', [
     'uses' => 'Admin\DifficultyController@destroy',
     'as' => 'admin_difficulty_delete_path',
 ]);
+//video
+
+Route::get('admin/video', [
+    'uses' => 'Admin\VideoController@index',
+    'as' => 'admin_video_index_path',
+]);
+Route::get('admin/video/create', [
+    'uses' => 'Admin\VideoController@create',
+    'as' => 'admin_video_create_path',
+]);
+Route::post('admin/video/store', [
+    'uses' => 'Admin\VideoController@store',
+    'as' => 'admin_video_store_path',
+]);
+Route::get('admin/video/edit/{id}', [
+    'uses' => 'Admin\VideoController@edit',
+    'as' => 'admin_video_edit_path',
+]);
+Route::post('admin/video/update/{id}', [
+    'uses' => 'Admin\VideoController@update',
+    'as' => 'admin_video_update_path',
+]);
+Route::delete('admin/video/edit/{id}', [
+    'uses' => 'Admin\VideoController@destroy',
+    'as' => 'admin_video_delete_path',
+]);
+Route::post('admin/video/image/image_store', [
+    'uses' => 'Admin\VideoController@image_store',
+    'as' => 'admin_video_image_store_path',
+]);
+Route::post('admin/video/image/image_delete', [
+    'uses' => 'Admin\VideoController@image_delete',
+    'as' => 'admin_video_image_delete_path',
+]);
+Route::post('admin/video/image/image_delete_form', [
+    'uses' => 'Admin\VideoController@image_delete_form',
+    'as' => 'admin_video_image_delete_form_path',
+]);
+Route::get('admin/video/image/image_list', [
+    'uses' => 'Admin\VideoController@image_list',
+    'as' => 'admin_video_list_path',
+]);
+//inquire
+Route::get('admin/inquire', [
+    'uses' => 'Admin\InquireController@list',
+    'as' => 'admin_list_index_path',
+]);
+Route::get('admin/inquire/{id}', [
+    'uses' => 'Admin\InquireController@index',
+    'as' => 'admin_inquire_index_path',
+]);
+Route::post('admin/inquire/store', [
+    'uses' => 'Admin\InquireController@store',
+    'as' => 'admin_inquire_store_path',
+]);
+Route::get('admin/inquire/edit/{id}', [
+    'uses' => 'Admin\InquireController@edit',
+    'as' => 'admin_inquire_edit_index_path',
+]);
+Route::delete('admin/inquire/delete/{id}', [
+    'uses' => 'Admin\InquireController@destroy',
+    'as' => 'admin_inquire_delete_path',
+]);
+//testimonials
+Route::get('admin/testimonial', [
+    'uses' => 'Admin\TestimonialController@index',
+    'as' => 'admin_testimonial_index_path',
+]);
+
+
 //tours
 Route::get('admin/tours', [
     'uses' => 'Admin\ToursController@index',

@@ -12,7 +12,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb small font-weight-bold p-0 m-0 bg-white">
                                 <li class="breadcrumb-item"><a href="#">1. Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">All Category</li>
+                                <li class="breadcrumb-item active" aria-current="page">All Packages</li>
                             </ol>
                         </nav>
                     </div>
@@ -47,7 +47,7 @@
         <div class="toast bg-primary fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000" style="left: auto; top: 55px; right: 10px;">
             <div class="toast-header">
                 <span data-feather="alert-circle" class="text-success mr-2"></span>
-                <strong class="mr-auto">Category</strong>
+                <strong class="mr-auto">Not included</strong>
                 <small>
                     @php
                         date_default_timezone_set('America/Lima');
@@ -68,7 +68,7 @@
         <div class="toast bg-danger fixed-top" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000" style="left: auto; top: 55px; right: 10px;">
             <div class="toast-header">
                 <span data-feather="alert-circle" class="text-success mr-2"></span>
-                <strong class="mr-auto">Category</strong>
+                <strong class="mr-auto">Not included</strong>
                 <small>
                     @php
                         date_default_timezone_set('America/Lima');
@@ -91,33 +91,37 @@
             <div class="table-title m-0">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Manage <b>Category</b></h2>
+                        <h2>Manage <b>Not Included</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addCategory" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> Add New Category</a>
+                        <a href="#addIncluded" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> Add New Not Included</a>
                         <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span data-feather="trash"></span> Delete</a>
                     </div>
                 </div>
             </div>
 
             <!-- add Modal HTML -->
-            <div id="addCategory" class="modal fade">
+            <div id="addIncluded" class="modal fade">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <form action="{{route('admin_category_store_path')}}" method="post">
+                        <form action="{{route('admin_not_included_store_path')}}" method="post">
                             @csrf
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Category</h4>
+                                <h4 class="modal-title">Add not Included</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Category</label>
-                                    <input type="text" class="form-control" name="txt_category" required>
+                                    <label>Not Included</label>
+                                    <input type="text" class="form-control" name="txt_included" required value="">
                                 </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea name="txta_descripcion" class="form-control"></textarea>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="estado_si" name="rdo_estado" class="custom-control-input" value="1" checked>
+                                    <label class="custom-control-label" for="estado_si">Activado</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="cestado_no" name="rdo_estado" class="custom-control-input" value="0">
+                                    <label class="custom-control-label" for="cestado_no">Desactivado</label>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -139,14 +143,14 @@
 								<label for="selectAll"></label>
 							</span>
                     </th>
-                    <th>Category</th>
+                    <th>Included</th>
                     {{--<th>Address</th>--}}
                     <th class="text-center">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($category as $category1)
-
+                @foreach($included->groupBy('titulo') as $included1)
+                    @foreach($included1 as $included2)
                         <tr>
                             <td>
                             <span class="custom-checkbox">
@@ -154,23 +158,23 @@
                                 <label for="checkbox1"></label>
                             </span>
                             </td>
-                            <td>{{$category1->nombre}} </td>
-                            {{--<td>{{$category1->estado}}</td>--}}
+                            <td>{{$included2->noincluye}} </td>
+                            {{--<td>{{$included2->estado}}</td>--}}
                             {{--<td>(171) 555-2222</td>--}}
                             <td class="text-center">
-                                <a href="{{route('admin_category_edit_path', $category1->id)}}" class="edit"><span data-feather="edit"></span></a>
-                                <a href="#delete_category_{{$category1->id}}" class="delete" data-toggle="modal"><span data-feather="trash"></span></a>
+                                <a href="#edit_included_{{$included2->id}}" class="edit" data-toggle="modal"><span data-feather="edit"></span></a>
+                                <a href="#delete_included_{{$included2->id}}" class="delete" data-toggle="modal"><span data-feather="trash"></span></a>
                             </td>
                         </tr>
                         <!-- Delete Modal HTML -->
-                        <div id="delete_category_{{$category1->id}}" class="modal fade">
+                        <div id="delete_included_{{$included2->id}}" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form action="{{route('admin_category_delete_path', $category1->id)}}" method="post">
+                                    <form action="{{route('admin_not_included_delete_path', $included2->id)}}" method="post">
                                         @method('DELETE')
                                         @csrf
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Delete Included</h4>
+                                            <h4 class="modal-title">Delete not included</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">
@@ -187,24 +191,41 @@
                         </div>
 
                         <!-- Edit Modal HTML -->
-                        <div id="edit_category_{{$category1->id}}" class="modal fade">
+                        <div id="edit_included_{{$included2->id}}" class="modal fade">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
-                                    <form action="{{route('admin_category_update_path', $category1->id)}}" method="post">
+                                    <form action="{{route('admin_not_included_update_path', $included2->id)}}" method="post">
                                         @csrf
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Add Category</h4>
+                                            <h4 class="modal-title">Add Employee</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="form-group">
-                                                <label>Category</label>
-                                                <input type="text" class="form-control" name="txt_category" required value="{{$category1->nombre}}">
+                                                <label>Included</label>
+                                                <input type="text" class="form-control" name="txt_included" required value="{{$included2->noincluye}}">
                                             </div>
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea name="txta_descripcion" rows="6" class="form-control">{{$category1->descripcion}}</textarea>
+                                            @php
+                                                if ($included2->estado == 1) {
+                                                    $estado_a = "checked";
+                                                    $estado_d = "";
+                                                }else{
+                                                    $estado_a = "";
+                                                    $estado_d = "checked";
+                                                }
+
+                                            @endphp
+
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="estado_si" name="rdo_estado" class="custom-control-input" value="1" {{$estado_a}}>
+                                                <label class="custom-control-label" for="estado_si">Activado</label>
                                             </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="cestado_no" name="rdo_estado" class="custom-control-input" value="0" {{$estado_d}}>
+                                                <label class="custom-control-label" for="cestado_no">Desactivado</label>
+                                            </div>
+
+
                                         </div>
                                         <div class="modal-footer">
                                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -215,7 +236,7 @@
                             </div>
                         </div>
 
-
+                    @endforeach
                 @endforeach
                 </tbody>
             </table>

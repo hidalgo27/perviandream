@@ -129,7 +129,6 @@
                         <td class="text-center">
                             <a href="{{route('admin_package_edit_path', $paquetes->id)}}" class="edit"><span data-feather="edit-3"></span></a>
                             <a href="#delete_package_{{$paquetes->id}}" class="delete" data-toggle="modal"><span data-feather="trash"></span></a>
-                            <a href="{{route('admin_inquire_index_path', $paquetes->id)}}"><span data-feather="code"></span></a>
                         </td>
                     </tr>
                     <div id="delete_package_{{$paquetes->id}}" class="modal fade">
