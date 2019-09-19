@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8a868784-1cb3-4725-bb29-a3e13b18d1df" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomepageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/page/packages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/packages.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/itinerary.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/itinerary.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -182,7 +178,7 @@
       <workItem from="1567176317075" duration="3199000" />
       <workItem from="1567206643796" duration="221000" />
       <workItem from="1568732309654" duration="5003000" />
-      <workItem from="1568894199555" duration="1706000" />
+      <workItem from="1568894199555" duration="2753000" />
     </task>
     <servers />
   </component>

@@ -4,16 +4,16 @@
     @include('layouts.page.menu')
     @foreach($paquete_iti as $paquetes)
     <section class="position-relative">
-        <div class="form-header">
-            <div class="container">
-                <div class="row justify-content-center align-items-center mb-5">
-                    <div class="col-12 text-center">
-                        <h2 class="display-4 text-white font-weight-bold">{{($paquetes->titulo)}}</h2>
-                        <i class="fas fa-angle-down fa-6x text-white"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+{{--        <div class="form-header">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row justify-content-center align-items-center mb-5">--}}
+{{--                    <div class="col-12 text-center">--}}
+{{--                        <h2 class="display-4 text-white font-weight-bold">{{($paquetes->titulo)}}</h2>--}}
+{{--                        <i class="fas fa-angle-down fa-6x text-white"></i>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div id="home-slider-container">
             <div id="home-slider">
                 @foreach($paquetes->imagen_paquetes->take(1) as $paquetes_imagen)
