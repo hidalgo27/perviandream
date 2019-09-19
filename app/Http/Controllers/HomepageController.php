@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\TCategoria;
 use App\TComentario;
+use App\TDestino;
 use App\THotel;
 use App\THotelDestino;
 use App\TItinerarioImagen;
@@ -29,7 +30,17 @@ class HomepageController extends Controller
     }
     public function destinations()
     {
-        return view('page.destinations');
+        $destination = TDestino::all();
+        return view('page.destinations', compact('destination'));
+    }
+    public function destinations_show($title)
+    {
+        $ciudad = explode('-tours', $title);
+        $ciudad = $ciudad[0];
+        $destinos = TDestino::all();
+        $paquete = TPaquete::with('paquetes_destinos', 'precio_paquetes', 'paquetes_categoria.categoria')->get();
+        $paquetes_de = TPaqueteDestino::with(['destinos'=>function($query) use ($ciudad) { $query->where('nombre', $ciudad);}])->get();
+        return view('page.destinations-show', compact('destinos', 'paquetes_de','paquete'));
     }
     public function tours()
     {
@@ -62,65 +73,5 @@ class HomepageController extends Controller
         $comentario = TComentario::with('itinerario')->get();
         $imagen = TItinerarioImagen::with('itinerario')->get();
         return view('page.itinerary', ['title'=>$title, 'paquete_iti'=>$paquete_iti, 'paquete_destinos'=>$paquete_destinos, 'paquete'=>$paquete, 'hoteles'=>$hoteles, 'hoteles_destinos'=>$hoteles_destinos, 'vuelo'=>$vuelo, 'paquete_vuelo'=>$paquete_vuelo, 'dificultad'=>$dificultad, 'comentario'=>$comentario, 'imagen'=>$imagen]);
-    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

@@ -228,7 +228,7 @@
 
     $(window).resize(function(){
         $slider.find(".slider-content").css({"height":$(window).height(),"eidth":$(window).width()});
-    })
+    });
 
     // $("#menu").metisMenu();
     $(function() {
@@ -261,6 +261,10 @@
                 video.pause();
                 icons.removeClass('fa-pause').addClass('fa-play');
             }
+        });
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
         });
     });
 </script>

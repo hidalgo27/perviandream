@@ -788,3 +788,13 @@ section p{font-family:'Lato', sans-serif;}
         }
     }
 }
+.position-absolute-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.position-absolute-top {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}

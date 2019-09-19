@@ -23,6 +23,10 @@ Route::get('/peru-reiseziele', [
     'uses' => 'HomepageController@destinations',
     'as' => 'destinations_path',
 ]);
+Route::get('/peru-reiseziele/{title}', [
+    'uses' => 'HomepageController@destinations_show',
+    'as' => 'destinations_show_path',
+]);
 Route::get('/rundreise', [
     'uses' => 'HomepageController@tours',
     'as' => 'tours_path',

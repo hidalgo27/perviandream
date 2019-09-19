@@ -16,40 +16,13 @@
         <div id="home-slider-container">
             <div id="home-slider">
                 <div class="slider-item"><img src="{{asset('images/destinations/banners/machu-picchu.jpg')}}"/>
-                    {{--<div class="container">--}}
-                        {{--<div class="slider-content row align-items-center">--}}
-                            {{--<div class="container">--}}
-                            {{--<div class="slider-controls"><a class="slider-prev" href="#onceki"> </a><a class="slider-next" href="#sonraki"></a></div>--}}
-                            {{--</div>--}}
-                            {{--<div class="col">--}}
-                                {{--<h2 class="display-4 font-weight-bold text-white">Auf mystischen <span class="d-block">Wegen</span></h2>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+
                 </div>
                 <div class="slider-item"><img src="{{asset('images/destinations/banners/colca-canyon.jpg')}}"/>
-                    {{--<div class="container">--}}
-                        {{--<div class="slider-content row align-items-center">--}}
-                            {{--<div class="container">--}}
-                            {{--<div class="slider-controls"><a class="slider-prev" href="#onceki"> </a><a class="slider-next" href="#sonraki"></a></div>--}}
-                            {{--</div>--}}
-                            {{--<div class="col">--}}
-                                {{--<h2 class="display-4 font-weight-bold text-white">Kraftorte <span class="d-block">Erleben</span></h2>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+
                 </div>
                 <div class="slider-item"><img src="{{asset('images/destinations/banners/puno.jpg')}}"/>
-                    {{--<div class="container">--}}
-                        {{--<div class="slider-content row align-items-center">--}}
-                            {{--<div class="container">--}}
-                            {{--<div class="slider-controls"><a class="slider-prev" href="#onceki"> </a><a class="slider-next" href="#sonraki"></a></div>--}}
-                            {{--</div>--}}
-                            {{--<div class="col">--}}
-                                {{--<h2 class="display-4 font-weight-bold text-white">Besonderen <span class="d-block">Menschen Begegnen</span></h2>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+
                 </div>
             </div>
         </div>
@@ -59,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <h1 class="text-red-primary display-4 text-red font-weight-bold">Peru Reiseziele</h1>
+                    <h1 class="text-red-primary display-4 text-red font-weight-bold">Peru aReiseziele</h1>
                     <p class="h4 text-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </div>
             </div>
@@ -68,17 +41,74 @@
 
     <section class="my-5">
         <div class="container">
-            <div class="row align-items-center">
-                @foreach($destination as $destinations)
-                <div class="col-4 mb-4">
-                    <a href="{{route('destinations_show_path', ['peru-travel', str_replace(' ', '-', strtolower($destinations->nombre))])}}-tours">
-                        <div class="position-relative clearfix">
-                            <img src="{{asset('images/destinations/'.$destinations->imagen)}}" alt="" class="w-100 rounded">
-                            <span class="destino-name position-absolute bg-rgba-dark-4 d-block text-white w-100 botton-10 text-center p-2 h5">{{ucwords(strtolower($destinations->nombre))}}</span>
-                        </div>
-                    </a>
+            <div class="row">
+
+                <div class="col-3">
+                    <ul class="list-group list-group-flush">
+
+                        @foreach($destinos->sortBy('nombre') as $destino)
+                            <li class="list-group-item">
+                                <a href="{{route('destinations_show_path', [str_replace(' ', '-', strtolower($destino->nombre))])}}-tours" class="font-weight-bold text-dark">
+                                    <img src="{{asset('images/destinations/'.str_replace(' ','-', strtolower($destino->imagen)).'')}}" alt="{{strtolower($destino->nombre)}}" width="60" height="60" class="rounded-circle buble-destinations {{ Request::is( 'destinations/peru-travel/'.str_replace(' ', '-', strtolower($destino->nombre)).'-tours') ? 'active' : '' }}" data-toggle="tooltip" data-placement="top" title="{{ucwords(strtolower($destino->nombre))}}">
+                                    <span>{{ucwords(strtolower($destino->nombre))}}</span>
+                                </a>
+                            </li>
+                        @endforeach
+
+                    </ul>
                 </div>
-                    @endforeach
+                <div class="col-9">
+                    <div class="row">
+
+                        @foreach($paquetes_de as $paquetes_des)
+                            @if(isset($paquetes_des->destinos))
+                                @foreach($paquete->where('id',$paquetes_des->idpaquetes)->sortBy("duracion") as $paquetes)
+                                    <div class="col-12 col-lg-6 text-decoration-none mb-5 d-flex">
+                                        <div class="bg-light shadow-sm rounded">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col-12">
+                                                    <div class="position-relative">
+                                                        <img src="{{asset('images/mapas/'.$paquetes->imagen.'')}}" alt="" class="w-100 rounded-left">
+                                                        <div class="position-absolute-bottom p-2 text-center">
+                                                            <div class="row align-items-center no-gutters">
+                                                                @foreach($paquetes->paquetes_categoria as $paquetes_categorias)
+                                                                    <span class="small font-weight-bold badge badge-red-light shadow">{{$paquetes_categorias->categoria->nombre}}</span>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-center mt-2">
+                                                    <div class="px-3">
+                                                        <h2 class="h6 font-weight-bold">{{$paquetes->titulo}}</h2>
+                                                        <small class="text-muted font-weight-bold">{{$paquetes->duracion}} tag</small>
+                                                        @foreach($paquetes->precio_paquetes as $precio)
+                                                            @if($precio->estrellas == 2)
+                                                                @if($precio->precio_d > 0)
+                                                                    {{--                                                                <p class="text-info font-weight-bold m-0 h5"><small><sup>form $</sup></small>{{$precio->precio_d}}<small>USD</small></p>--}}
+                                                                    <div class="display-4 font-weight-bold"><sup>$</sup>{{$precio->precio_d}}</div>
+                                                                @else
+                                                                    <span class="text-danger">Pregunte</span>
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                        <div class="row my-3 justify-content-center">
+                                                            <div class="col-6">
+                                                                <a href="{{route('itinerary_path', [str_replace(' ','-',strtolower($paquetes->titulo)), $paquetes->duracion])}}" class="btn btn-red-dark btn-block font-weight-bold">View</a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+
             </div><!-- /.row -->
         </div><!-- /.container -->
     </section><!-- /.item -->
