@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a868784-1cb3-4725-bb29-a3e13b18d1df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/TDestinoImagen.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DestinationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DestinationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ItineraryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ItineraryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/VideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/VideoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/destinations/banners/lima.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/destinations/banners/lima.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/destinations-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/destinations-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin/sidebar.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -179,7 +186,7 @@
       <workItem from="1567176317075" duration="3199000" />
       <workItem from="1567206643796" duration="221000" />
       <workItem from="1568732309654" duration="5003000" />
-      <workItem from="1568894199555" duration="3716000" />
+      <workItem from="1568894199555" duration="5467000" />
     </task>
     <servers />
   </component>

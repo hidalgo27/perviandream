@@ -411,7 +411,7 @@ class HomeController extends Controller
         $image = $request->file('file');
         $id_package = $request->get('id_package_file');
 
-        $imageName = $image->getClientOriginalName();
+        $imageName = time().$image->getClientOriginalName();
         $image->move(public_path('images/mapas/'), $imageName);
 
         $imageUpload = TPaquete::FindOrFail($id_package);
@@ -438,7 +438,7 @@ class HomeController extends Controller
         $image = $request->file('file');
         $id_package = $request->get('id_package_file');
 
-        $imageName = $image->getClientOriginalName();
+        $imageName = time().$image->getClientOriginalName();
         $image->move(public_path('images/packages/slider/'), $imageName);
 
         $imageUpload = new TPaqueteImagen();

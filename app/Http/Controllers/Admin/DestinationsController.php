@@ -142,7 +142,7 @@ class DestinationsController extends Controller
         $image = $request->file('file');
         $id_destinations = $request->get('id_destinations_file');
 
-        $imageName = $image->getClientOriginalName();
+        $imageName = time().$image->getClientOriginalName();
         $image->move(public_path('/images/destinations/banners/'), $imageName);
 
         $imageUpload = new TDestinoImagen();
@@ -184,9 +184,8 @@ class DestinationsController extends Controller
         $image = $request->file('file');
         $id_destino = $request->get('id_destinations_file');
 
-        $imageName = $image->getClientOriginalName();
+        $imageName = time().$image->getClientOriginalName();
         $image->move(public_path('images/destinations'), $imageName);
-
         $imageUpload = TDestino::FindOrFail($id_destino);
         $imageUpload->imagen = $imageName;
         $imageUpload->save();

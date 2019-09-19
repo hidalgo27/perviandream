@@ -131,7 +131,7 @@ class ItineraryController extends Controller
     {
         $image = $request->file('file');
         $id_itinerary = $request->input('id_itinerary_file');
-        $imageName = $image->getClientOriginalName();
+        $imageName = time().$image->getClientOriginalName();
         $image->move(public_path('images/itinerario/'), $imageName);
 
         $imageUpload = new TItinerarioImagen();

@@ -137,7 +137,7 @@ class CategoryController extends Controller
         $image = $request->file('file');
         $id_category = $request->get('id_category_file');
 
-        $imageName = $image->getClientOriginalName();
+        $imageName = time().$image->getClientOriginalName();
         $image->move(public_path('images/banners/category'), $imageName);
 
         $imageUpload = TCategoria::FindOrFail($id_category);
@@ -186,7 +186,7 @@ class CategoryController extends Controller
         $image = $request->file('file');
         $id_category = $request->get('id_category_file');
 
-        $imageName = $image->getClientOriginalName();
+        $imageName = time().$image->getClientOriginalName();
         $image->move(public_path('images/category'), $imageName);
 
         $imageUpload = TCategoria::FindOrFail($id_category);

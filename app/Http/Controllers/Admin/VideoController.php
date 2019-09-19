@@ -127,7 +127,7 @@ class VideoController extends Controller
     {
         $image = $request->file('file');
         $id_video = $request->input('id_video_file');
-        $imageName = $image->getClientOriginalName();
+        $imageName = time().$image->getClientOriginalName();
         $image->move(public_path('images/video-testimonio/'), $imageName);
 
         $imageUpload = TVideoTestimonio::FindOrFail($id_video);
