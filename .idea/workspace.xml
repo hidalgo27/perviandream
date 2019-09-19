@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a868784-1cb3-4725-bb29-a3e13b18d1df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/TDestinoImagen.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,7 +118,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -131,6 +132,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="C:\Users\Sigma\proyectos\Homestead\codigo\peruviandream\app" />
     </key>
   </component>
@@ -177,7 +179,7 @@
       <workItem from="1567176317075" duration="3199000" />
       <workItem from="1567206643796" duration="221000" />
       <workItem from="1568732309654" duration="5003000" />
-      <workItem from="1568894199555" duration="3264000" />
+      <workItem from="1568894199555" duration="3716000" />
     </task>
     <servers />
   </component>
