@@ -11,6 +11,10 @@ class TDestino extends Model
     public function paquetes_destinos()
     {
         return $this->hasMany(TPaqueteDestino::class, 'iddestinos');
+    }
 
+    public function destino_imagen()
+    {
+        return $this->hasMany(TDestinoImagen::class, 'iddestinos');
     }
 }
