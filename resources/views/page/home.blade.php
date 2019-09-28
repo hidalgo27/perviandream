@@ -126,7 +126,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                             <div class="os-animation" data-os-animation="fadeInLeft" data-os-animation-delay="0s">
-                                <h4 class="font-weight-bold">Willkommen Auf KOLIBRI PERU TRAVEL</h4>
+                                <h4 class="font-weight-bold">Willkommen Auf PERUVIAN DREAMTIME</h4>
                                 <hr>
                             </div>
                             <div class="os-animation" data-os-animation="fadeInLeft" data-os-animation-delay="0.2s">
