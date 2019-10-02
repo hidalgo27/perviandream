@@ -71,7 +71,7 @@
             <div class="row align-items-center">
                 @foreach($destination as $destinations)
                 <div class="col-4 mb-4">
-                    <a href="{{route('destinations_show_path', ['peru-travel', str_replace(' ', '-', strtolower($destinations->nombre))])}}-tours">
+                    <a href="{{route('destinations_show_path', str_replace(' ', '-', strtolower($destinations->nombre)))}}-tours">
                         <div class="position-relative clearfix">
                             <img src="{{asset('images/destinations/'.$destinations->imagen)}}" alt="" class="w-100 rounded">
                             <span class="destino-name position-absolute bg-rgba-dark-4 d-block text-white w-100 botton-10 text-center p-2 h5">{{ucwords(strtolower($destinations->nombre))}}</span>

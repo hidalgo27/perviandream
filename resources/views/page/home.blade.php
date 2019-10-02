@@ -63,7 +63,7 @@
         </div>
         <div id="home-slider-container">
             <div id="home-slider">
-                <div class="slider-item"><img src="{{asset('images/sliders/slider-4.jpg')}}"/>
+                <div class="slider-item"><img src="{{asset('images/peruvianslider3.jpg')}}"/>
                     <div class="container">
                         <div class="slider-content row align-items-center">
                             {{--<div class="container">--}}
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slider-item"><img src="{{asset('images/sliders/slider-6.jpg')}}"/>
+                <div class="slider-item"><img src="{{asset('images/peruvian-slider-4.jpg')}}"/>
                     <div class="container">
                         <div class="slider-content row align-items-center">
                             {{--<div class="container">--}}
