@@ -74,4 +74,20 @@ class HomepageController extends Controller
         $imagen = TItinerarioImagen::with('itinerario')->get();
         return view('page.itinerary', ['title'=>$title, 'paquete_iti'=>$paquete_iti, 'paquete_destinos'=>$paquete_destinos, 'paquete'=>$paquete, 'hoteles'=>$hoteles, 'hoteles_destinos'=>$hoteles_destinos, 'vuelo'=>$vuelo, 'paquete_vuelo'=>$paquete_vuelo, 'dificultad'=>$dificultad, 'comentario'=>$comentario, 'imagen'=>$imagen]);
     }
+
+    public function category()
+    {
+        $categoria = TCategoria::all();
+        return view('page.category', compact('categoria'));
+    }
+    public function category_show($title)
+    {
+        $category_t = str_replace('-', ' ', $title);
+        $category = TCategoria::where('nombre', $category_t)->get();
+        foreach ($category as $c_s) {
+            $categorias = TPaqueteCategoria::with('paquete', 'categoria')->where('idcategoria', $c_s->id)->get();
+        }
+        $all_category = TCategoria::all();
+        return view('page.category-show',compact('categorias','all_category','category_t'));
+    }
 }

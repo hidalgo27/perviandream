@@ -43,7 +43,15 @@ Route::get('/package/{title}/{days}-days-tours', [
     'uses' => 'HomepageController@itinerary',
     'as' => 'itinerary_path',
 ]);
-
+//category
+Route::get('/packages/category', [
+    'uses' => 'HomepageController@category',
+    'as' => 'category_path',
+]);
+Route::get('/packages/category/{title}', [
+    'uses' => 'HomepageController@category_show',
+    'as' => 'category_show_path',
+]);
 
 //ADMINISTRADOR
 Auth::routes();
