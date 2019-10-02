@@ -355,7 +355,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col my-4 text-center">
-                        <h2 class="font-weight-bold h1">Welcome to The World’s #1 KOLIBRI Site</h2>
+                        <h2 class="font-weight-bold h1">Welcome to The World’s #1 PERUVIAN DREAMTIME Site</h2>
                         <div class="sec-title-div-3"></div>
                         <p class="lead font-weight-normal text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore fugit mollitia neque officia quam quis reiciendis tenetur vero voluptatibus voluptatum. Architecto dolor eligendi eum inventore ipsum odio porro ut voluptatibus!</p>
                     </div>
@@ -369,7 +369,7 @@
                             <div class="box-content">
                                 <h3 class="title">{{ucwords(strtolower($categorias->nombre))}}</h3>
                                 <span class="post">
-                                    <a href="{{route('packages_path')}}" class="text-white">View Packages</a>
+                                    <a href="{{route('category_show_path', str_replace(' ', '-', strtolower($categorias->nombre)))}}" class="text-white">View Packages</a>
                                 </span>
                                 {{--<ul class="social">--}}
                                     {{--<li><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
@@ -383,6 +383,13 @@
                     @endforeach
 
                 </div>
+
+                <div class="row mt-5">
+                    <div class="col text-center">
+                        <a href="{{route('category_path')}}" class="btn btn-lg btn-primary font-weight-bold">View All Categories</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

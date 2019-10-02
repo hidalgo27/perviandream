@@ -14087,8 +14087,8 @@ header {
 
 .box16 .post,
 .box16 .title {
-  -webkit-transform: translateY(145px);
-          transform: translateY(145px);
+  -webkit-transform: translateY(70px);
+          transform: translateY(70px);
   transition: all 0.4s cubic-bezier(0.13, 0.62, 0.81, 0.91) 0s;
 }
 
