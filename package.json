@@ -30,7 +30,7 @@
         "bootstrap4c-dropzone": "^1.0.4",
         "feather-icons": "^4.21.0",
         "intl-tel-input": "^15.0.2",
-        "jquery-ui": "^1.12.1",
+        "jquery-ui": "^1.13.0",
         "lazyload": "^2.0.0-rc.2",
         "metismenu": "^3.0.4",
         "owl.carousel": "^2.3.4",
